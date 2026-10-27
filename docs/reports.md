@@ -8,7 +8,7 @@ Research tools automatically save evidence in a separate SQLite database. Each M
 
 `get_fingerprint_profile` saves each probe once and stores the completed profile under the run's `fingerprint_profile`. A saved summary view includes the profile; detailed views and exports additionally include probe evidence. This retrieval needs neither the target nor the catalog. See [profile generation and retrieval](fingerprints.md).
 
-Startup creates `reports.sqlite3`, applies versioned report migrations, and prepares an `exports` directory. The default directory is `<state directory>/reports`, where the state directory is the same directory used for the default catalog. For example, on Windows it is `%LOCALAPPDATA%/anticells_red_mcp/catalog/reports`; on Linux it is `$XDG_DATA_HOME/anticells_red_mcp/catalog/reports` or `~/.local/share/anticells_red_mcp/catalog/reports`.
+Startup creates `reports.sqlite3`, applies versioned report migrations, and prepares an `exports` directory. The default directory is `<state directory>/reports`, where the state directory is the same directory used for the default catalog. On Windows it defaults to `%USERPROFILE%/AppData/Local/anticells_red_mcp/catalog/reports`; on Linux, `~/.local/share/anticells_red_mcp/catalog/reports`; on macOS, `~/Library/Application Support/anticells_red_mcp/catalog/reports`. Use `ANTICELLS_RED_MCP_STATE_DIR` for an explicit shared state location on any platform.
 
 Set `ANTICELLS_RED_MCP_REPORTS_DIR` to choose a different directory. `ANTICELLS_RED_MCP_STATE_DIR` changes the shared default state directory. Setting `ANTICELLS_RED_MCP_DATABASE_PATH` alone changes only the catalog file. Use a local disk outside a synchronized source checkout. Environment files are loaded only when explicitly selected with `ANTICELLS_RED_MCP_ENV_FILE` or the target profile configuration.
 
@@ -58,6 +58,8 @@ Existing calls such as `{"format":"summary"}` keep their original current-sessio
 
 ## CLI, backup, and cleanup
 
+The CLI examples below assume the project virtual environment is activated. Otherwise use `.venv/bin/anticells_red_mcp-reports` on macOS/Linux or `.venv\Scripts\anticells_red_mcp-reports.exe` on Windows, from the repository root.
+
 The separate CLI reads reports without loading a prompt catalog or contacting a target:
 
 ```bash
@@ -69,7 +71,7 @@ anticells_red_mcp-reports delete --run-id <run-uuid>
 anticells_red_mcp-reports delete --session-id <session-uuid>
 ```
 
-Use `--reports-dir /absolute/private/path` before the command to override the directory. `python -m anticells_red_mcp.reports.cli` provides the same commands. Explicit output copies refuse to overwrite an existing file. Deletion removes selected evidence and dependent exports, including combined exports containing a deleted run. Active runs and active sessions cannot be deleted. No automatic cleanup occurs.
+Use `--reports-dir /absolute/private/path` before the command to override the directory. For example, `anticells_red_mcp-reports --reports-dir /absolute/private/path list` inspects that store. CLI storage settings come from `ANTICELLS_RED_MCP_ENV_FILE` and the process environment; the profiles file's `env_files` are not applied to its directory selection. Pass the report directory explicitly if the server selects it there. `python -m anticells_red_mcp.reports.cli` provides the same commands. Explicit output copies refuse to overwrite an existing file. Deletion removes selected evidence and dependent exports, including combined exports containing a deleted run. Active runs and active sessions cannot be deleted. No automatic cleanup occurs.
 
 For a complete portable backup, stop all MCP processes using this directory, then copy the entire report directory, including `reports.sqlite3` and `exports`. Restore it into a private local directory and set `ANTICELLS_RED_MCP_REPORTS_DIR` accordingly. Registered export paths are reconstructed from their IDs and filenames, so moving the directory is supported. Do not copy a live SQLite file directly; use SQLite's backup API if an online database backup is required. For a consistent database-plus-export backup, stopping writers is recommended. The catalog database is backed up separately.
 

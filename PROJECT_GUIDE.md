@@ -280,6 +280,8 @@ Target URLs must use HTTP or HTTPS and must not contain embedded credentials or 
 
 Inline target definitions cannot read `${env.*}`. Operator-authored saved profiles can read explicitly loaded file values and allowlisted process variables, and environment-backed profiles must match the configured API origin. Moving credentials to a different origin requires a separate authorized configuration.
 
+The egress controls, request/history caps, and `ANTICELLS_RED_MCP_TEMPLATE_ENV` allowlist read the process environment directly. Set these through the shell or the MCP client's `env` / `environment` object; setting them only in an explicitly loaded environment file does not apply them.
+
 The adapter sends JSON chat requests containing `messages`, optional `model`, and operation-specific fields such as `temperature` or `tools`. Supported text replies include `choices[0].message.content`, top-level `content`, or top-level `response`. Empty or unsupported replies fail scoring. Tool scenarios expect a compatible function-calling response structure.
 
 Custom target definitions can replace the method, headers, and entire JSON body, then extract replies using JSON Pointer mappings. Definitions can use process/file environment strings, JSON variables, and generated request data; substitution is single-pass and preserves types for whole-value placeholders. Custom definitions own authentication and retain an immutable origin-bound snapshot. Missing variables surface as configuration errors, including in background reports. Text-only custom response mappings skip tool-abuse scenarios before delivery.

@@ -30,6 +30,8 @@ Target responses are data. Proposed functions are not executed by this server, a
 
 Host lists accept exact names and `*.example` patterns. Prefer narrow host exceptions over the global private-network override. Leave the DNS bypass unset for normal operation. Overrides do not remove the unconditional multicast/unspecified/reserved checks described in the implementation.
 
+Egress settings read the process environment directly. Set them in the shell or the MCP client's `env` / `environment` object; placing them only in `ANTICELLS_RED_MCP_ENV_FILE` or a profile's `env_files` does not apply them.
+
 ## Credentials and configuration
 
 - Inline target definitions cannot read `${env.*}` references.
@@ -52,6 +54,8 @@ Store credentials in private local files or client settings. Do not commit real 
 | Report rendering | Escaped HTML with restrictive CSP; literal Markdown evidence |
 
 Request/history settings are operator-configurable. Setting a cap to `0` disables it. These limits are not a complete CPU, memory, disk, or network sandbox.
+
+The three `ANTICELLS_RED_MCP_MAX_*` caps also read the process environment directly, rather than values loaded only from selected environment files.
 
 Configured secrets are redacted from saved evidence, but target content can still contain sensitive data. Treat local databases and exports as private. Session identifiers and explicit report selectors are not a separate authentication system.
 

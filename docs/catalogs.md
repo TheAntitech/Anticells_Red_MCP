@@ -145,8 +145,8 @@ The default file is `catalog.sqlite3` in the user's application data directory:
 
 | Platform | Directory |
 | --- | --- |
-| Windows | `%LOCALAPPDATA%/anticells_red_mcp/catalog` |
-| Linux | `$XDG_DATA_HOME/anticells_red_mcp/catalog`, or `~/.local/share/anticells_red_mcp/catalog` |
+| Windows | `%USERPROFILE%/AppData/Local/anticells_red_mcp/catalog` |
+| Linux | `~/.local/share/anticells_red_mcp/catalog` |
 | macOS | `~/Library/Application Support/anticells_red_mcp/catalog` |
 
 Agents running under the same user share this file. Set `ANTICELLS_RED_MCP_STATE_DIR` to use a different default directory, or `ANTICELLS_RED_MCP_DATABASE_PATH` to choose a specific SQLite file. An explicit file path takes precedence. Use an absolute path on a local disk outside a synchronized source checkout. SQLite URIs, connection URLs, and `:memory:` are not accepted. The database persists after the agent exits.
@@ -160,6 +160,8 @@ anticells_red_mcp-catalog setup
 Startup progress goes to stderr; stdout remains reserved for MCP messages. Simultaneous agent starts and publishers coordinate through SQLite transactions. New database files receive private Unix permissions; Windows uses inherited directory permissions. Use `install.ps1` for native Windows setup.
 
 ## Configuration and manual initialization
+
+The CLI examples below assume the project virtual environment is activated. Otherwise prefix `anticells_red_mcp-catalog` with `.venv/bin/` on macOS/Linux, or use `.venv\Scripts\anticells_red_mcp-catalog.exe` on Windows, from the repository root.
 
 Pass variables through the MCP client's environment, or explicitly select a private environment file with `ANTICELLS_RED_MCP_ENV_FILE`. The target profile `env_files` mechanism also works. There is no automatic `.env` discovery. Process environment values win over explicitly selected files.
 
@@ -229,6 +231,8 @@ IDs are separate from names: original duplicate names remain distinct records. A
 The five public namespaces are `fingerprint.scanner`, `jailbreaks.engine`, `injection.direct`, `tool_abuse.exploit`, and `mutation.creative_engine`. Use `new --namespace` for any namespace in the packaged [manifest](../src/anticells_red_mcp/catalog/data/manifest.json), which declares module categories and schemas. Generated examples preserve structured payloads and tool schemas where required. New engines and new categories require a separate code change.
 
 ## Edit, inspect, and disable
+
+The commands below use `custom/example-prompt`, the ID in the JSON example above. Import that example first, or replace the ID with the one generated for your own technique and shown by `list`.
 
 ```bash
 anticells_red_mcp-catalog list --namespace injection.direct
@@ -311,7 +315,7 @@ anticells_red_mcp-catalog restore catalog-backup.json
 anticells_red_mcp-catalog list
 ```
 
-`restore` validates the complete catalog, migrates the schema, and restores all records atomically, retaining positions, enabled status, exact content, and revisions. It refuses a database that already contains catalog data. Ordinary `import --update` retains its stale-update checks and is used to edit an existing catalog. Keep backups private: they contain your authored prompts. Session attack reports remain in memory, outside the catalog.
+`restore` validates the complete catalog, migrates the schema, and restores all records atomically, retaining positions, enabled status, exact content, and revisions. It refuses a database that already contains catalog data. Ordinary `import --update` retains its stale-update checks and is used to edit an existing catalog. Keep backups private: they contain your authored prompts. Research evidence is saved separately in `reports.sqlite3`; a catalog export does not back it up. Follow the separate [report backup instructions](reports.md#cli-backup-and-cleanup) to preserve reports and exports.
 
 Before upgrading, export a backup. Install the new package and restart; automatic setup applies pending migrations and missing seed records. With automatic setup disabled, run `migrate` and `seed` explicitly. Publishing content alone does not require a restart.
 

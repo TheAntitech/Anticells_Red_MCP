@@ -6,7 +6,7 @@ Anticells Red MCP uses stdio. The client starts the server as a child process wi
 | :--- | :--- |
 | Command | Absolute path to `.venv/bin/python` (Windows: `.venv\Scripts\python.exe`) |
 | Arguments | `-m`, `anticells_red_mcp.mcp_server.server` |
-| Working directory | Any directory; the package is installed in the virtual environment |
+| Working directory | Any directory when configured file paths are absolute; the package is installed in the virtual environment |
 
 Use absolute paths. Merge only this server entry into your existing client configuration. Restart the client after saving, then confirm that 12 tools are available.
 
@@ -54,7 +54,7 @@ OpenCode uses `mcp`, `type`, and a command array:
 }
 ```
 
-Add interpreter or target settings through the entry's `environment` object when needed. See the [OpenCode MCP documentation](https://opencode.ai/docs/mcp-servers/) for configuration locations and management commands.
+Add target settings through the entry's `environment` object when needed. To select another Python interpreter, change the first element of `command`; `ANTICELLS_RED_MCP_PYTHON` only selects an interpreter for the installer or optional Bash launcher. See the [OpenCode MCP documentation](https://opencode.ai/docs/mcp-servers/) for configuration locations and management commands.
 
 ## Other clients and SDKs
 

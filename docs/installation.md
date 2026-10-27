@@ -2,6 +2,8 @@
 
 Python 3.10+ and Git are required. Use PowerShell on native Windows and Bash on macOS/Linux. Commands below run from the repository root unless stated otherwise.
 
+Python must include `venv`, `ensurepip`, and `sqlite3`; the installer bootstraps pip inside `.venv`.
+
 ## Install with the guided script
 
 On macOS/Linux:
@@ -89,7 +91,16 @@ git pull --ff-only
 
 Restart the MCP client after updating. For development, install `.[dev]` in the virtual environment and run `python -m pytest -q` through that interpreter.
 
-On Windows, use the executables under `.venv\Scripts\` for the update commands, or rerun `install.ps1` after pulling changes.
+On Windows:
+
+```powershell
+git pull --ff-only
+.venv\Scripts\python.exe -m pip install --upgrade .
+.venv\Scripts\anticells_red_mcp-catalog.exe setup
+.venv\Scripts\anticells_red_mcp-doctor.exe
+```
+
+Alternatively, rerun the guided installer after pulling changes.
 
 ## Resolve setup errors
 
@@ -103,3 +114,5 @@ On Windows, use the executables under `.venv\Scripts\` for the update commands, 
 | `15` | The real MCP smoke test completes |
 
 Use `bash install.sh --verbose` or `powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -Verbose` for diagnostic output. Continue with [client setup](clients.md) or [troubleshooting](troubleshooting.md).
+
+If `.venv` came from another operating system or an interrupted setup, rerun with `--reinstall` (PowerShell: `-Reinstall`) to rebuild it with the selected interpreter.
