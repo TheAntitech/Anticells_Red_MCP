@@ -157,7 +157,7 @@ The Bash installer prepares the catalog in advance. Installed-package users may 
 anticells_red_mcp-catalog setup
 ```
 
-Startup progress goes to stderr; stdout remains reserved for MCP messages. Simultaneous agent starts and publishers coordinate through SQLite transactions. New database files receive private Unix permissions; Windows uses inherited directory permissions. The existing native Windows stdio launcher/event-loop issue remains separate from this storage change.
+Startup progress goes to stderr; stdout remains reserved for MCP messages. Simultaneous agent starts and publishers coordinate through SQLite transactions. New database files receive private Unix permissions; Windows uses inherited directory permissions. Use `install.ps1` for native Windows setup.
 
 ## Configuration and manual initialization
 
@@ -333,4 +333,4 @@ An old database URL or managed Docker `database.json` without an explicit SQLite
 python -m pytest -q
 ```
 
-The original regression scenarios inject a test snapshot. Storage tests use real SQLite files in temporary directories and run without external services or database variables. They cover exact content, concurrent initialization/publication, stale edits, atomic rollback, snapshot isolation, outages, migration failures, backup/restore, and CLI authoring. Run MCP stdio checks in a compatible Linux/Bash environment; the existing native Windows launcher/event-loop fix is separate.
+The original regression scenarios inject a test snapshot. Storage tests use real SQLite files in temporary directories and run without external services or database variables. They cover exact content, concurrent initialization/publication, stale edits, atomic rollback, snapshot isolation, outages, migration failures, backup/restore, and CLI authoring. MCP stdio checks use native Python on Windows and also cover the Bash helper on macOS/Linux.

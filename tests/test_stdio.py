@@ -1,6 +1,7 @@
 import asyncio
 from datetime import timedelta
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -16,8 +17,10 @@ def test_real_mcp_launch_from_another_directory(tmp_path):
     state_dir = str(tmp_path / 'new-state')
     async def check():
         params = StdioServerParameters(
-            command='bash', args=[str(ROOT / 'run.sh')],
+            command=sys.executable if os.name == 'nt' else 'bash',
+            args=['-m', 'anticells_red_mcp.mcp_server.server'] if os.name == 'nt' else [str(ROOT / 'run.sh')],
             env={'ANTICELLS_RED_MCP_PYTHON': sys.executable,
+                 'PYTHONPATH': str(ROOT / 'src'),
                  'ANTICELLS_RED_MCP_STATE_DIR': state_dir,
                  'ANTICELLS_RED_MCP_ALLOW_PRIVATE_TARGETS': 'true',
                  'ANTICELLS_RED_MCP_SKIP_HOST_RESOLUTION': 'true',

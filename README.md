@@ -27,13 +27,15 @@
 <a id="quick-start"></a>
 ## <img src="assets/icons/install.svg" width="20" height="20" alt=""> Quick start
 
-**Requires:** Python 3.10+, Git, and Bash. On Windows, use WSL. SQLite is included with Python.
+**Requires:** Python 3.10+ and Git. Use PowerShell on Windows or Bash on macOS/Linux. SQLite is included with Python.
 
 ```bash
 git clone git@github.com:Wael-Rd/Anticells_Red_MCP-1.0.0.git Anticells_Red_MCP
 cd Anticells_Red_MCP
 bash install.sh
 ```
+
+On native Windows, run `powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1` from the cloned repository instead of `bash install.sh`. This execution-policy setting applies only to that process.
 
 The installer creates `.venv`, installs the package, initializes the catalog, checks the default egress policy, and runs an MCP smoke test. It then prints client configuration.
 
@@ -43,12 +45,14 @@ Check your installation at any time:
 .venv/bin/anticells_red_mcp-doctor
 ```
 
+On Windows, use `.venv\Scripts\anticells_red_mcp-doctor.exe`.
+
 For manual installation, updates, and installer options, see the [installation guide](docs/installation.md).
 
 <a id="connect"></a>
 ## <img src="assets/icons/connect.svg" width="20" height="20" alt=""> Connect your agent
 
-The server uses **stdio**. Your client launches `bash` with the absolute path to `run.sh`; the launcher selects the project's `.venv` automatically.
+The server uses **stdio**. Use the configuration printed by the installer: it launches the project's virtual-environment Python directly on every platform.
 
 For clients that use an `mcpServers` configuration:
 
@@ -56,14 +60,14 @@ For clients that use an `mcpServers` configuration:
 {
   "mcpServers": {
     "anticells_red_mcp": {
-      "command": "bash",
-      "args": ["/absolute/path/Anticells_Red_MCP/run.sh"]
+      "command": "/absolute/path/Anticells_Red_MCP/.venv/bin/python",
+      "args": ["-m", "anticells_red_mcp.mcp_server.server"]
     }
   }
 }
 ```
 
-Replace the example path with your checkout. Merge the entry into your existing configuration, then restart the client and check for **12 tools**. OpenCode uses a different configuration shape; see [client setup](docs/clients.md).
+Replace the example path with your checkout. On Windows, the command ends in `.venv\\Scripts\\python.exe`; use the escaped path printed by the installer. Merge the entry into your existing configuration, then restart the client and check for **12 tools**. OpenCode uses a different configuration shape; see [client setup](docs/clients.md).
 
 <a id="tools"></a>
 ## <img src="assets/icons/toolkit.svg" width="20" height="20" alt=""> Research toolkit

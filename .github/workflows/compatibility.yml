@@ -1,0 +1,43 @@
+name: Installer compatibility
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  install-and-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.10', '3.12']
+    env:
+      ANTICELLS_RED_MCP_STATE_DIR: ${{ runner.temp }}/anticells-state
+      ANTICELLS_RED_MCP_REPORTS_DIR: ${{ runner.temp }}/anticells-state/reports
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install on macOS/Linux
+        if: runner.os != 'Windows'
+        run: ANTICELLS_RED_MCP_PYTHON="$(command -v python)" bash install.sh --verbose
+      - name: Install on native Windows
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          $env:ANTICELLS_RED_MCP_PYTHON = (Get-Command python).Source
+          .\install.ps1 -Verbose
+      - name: Test on macOS/Linux
+        if: runner.os != 'Windows'
+        run: |
+          .venv/bin/python -m pip install '.[dev]'
+          .venv/bin/python -m pytest -q
+      - name: Test on Windows
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          .venv\Scripts\python.exe -m pip install '.[dev]'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .venv\Scripts\python.exe -m pytest -q

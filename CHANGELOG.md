@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased - Native Windows installation
+
+- Add `install.ps1` and shared Python installation steps with platform-specific virtual-environment paths. Preserve the seven setup checks and exit codes 10-15.
+- Print client configurations that launch the installed Python module directly, without Bash, and report the correct macOS/Windows Claude configuration locations.
+- Use the Windows Proactor event loop for native MCP pipes, subprocesses, and worker-thread wakeups; retain the Unix self-pipe workaround.
+- Make the post-install smoke test launch native Python and add Windows/macOS/Linux installer CI plus a thread/subprocess regression check.
+
 ## Unreleased — publication security review
 
 - Close the DNS-rebinding window by validating and pinning the destination at

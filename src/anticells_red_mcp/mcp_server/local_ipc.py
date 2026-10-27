@@ -1,4 +1,4 @@
-"""Wake asyncio's anonymous local self-pipe using file-descriptor writes.
+"""Use native Windows async I/O and a local self-pipe workaround on Unix.
 
 Some managed environments reject socket.send even for anonymous local socket
 pairs. asyncio normally ignores that error and its thread callbacks then wait
@@ -23,4 +23,8 @@ class LocalIPCEventLoop(asyncio.SelectorEventLoop):
 
 class LocalIPCPolicy(asyncio.DefaultEventLoopPolicy):
     def new_event_loop(self) -> asyncio.AbstractEventLoop:
+        if os.name == "nt":
+            # Windows sockets are not CRT file descriptors. Its Proactor loop
+            # also supplies the subprocess/pipe support required by MCP stdio.
+            return asyncio.ProactorEventLoop()
         return LocalIPCEventLoop()

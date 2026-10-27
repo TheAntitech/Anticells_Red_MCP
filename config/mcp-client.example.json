@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "anticells_red_mcp": {
-      "command": "bash",
-      "args": ["/absolute/path/anticells_red_mcp/run.sh"]
+      "command": "/absolute/path/anticells_red_mcp/.venv/bin/python",
+      "args": ["-m", "anticells_red_mcp.mcp_server.server"]
     }
   }
 }

@@ -42,7 +42,7 @@ The default budget is six requests. Set `intensity` from 1 to 5 for a larger bud
 
 ## The client shows disabled or disconnected
 
-Enable the local server entry in your client's settings, verify the absolute checkout path, and reload the MCP connection. Use the client's connection status and stderr logs to inspect startup errors. The command should be `bash`, with the path to `run.sh` passed as a separate argument. See the [configuration example](../config/mcp-client.example.json).
+Enable the local server entry in your client's settings, verify the absolute Python path, and reload the MCP connection. Use the client's connection status and stderr logs to inspect startup errors. Use the virtual-environment Python with `-m anticells_red_mcp.mcp_server.server`; see [client setup](clients.md).
 
 Install dependencies with `bash /absolute/path/anticells_red_mcp/install.sh`. `run.sh` prefers `.venv/bin/python`, then the older `venv/bin/python`, then `python3`. Set `ANTICELLS_RED_MCP_PYTHON` in the client's environment to choose another interpreter.
 
@@ -90,4 +90,6 @@ Local fitness is a template score. Generated candidates are listed separately an
 
 ## Windows stdio launch
 
-The existing Bash helpers assume `.venv/bin/python`, while native Windows virtual environments use `Scripts`. A `bash` command resolving to an unconfigured WSL installation can fail before Python starts. The current `LocalIPCPolicy` also uses a file-descriptor wakeup that is incompatible with native Windows socket descriptors. These launcher/event-loop issues are separate from target configuration. Run the stdio integration suite in a compatible Linux/Bash environment; Windows launch support remains a separate fix.
+Run `powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -Verbose` and use its printed client configuration. The command must point to the absolute `.venv\Scripts\python.exe` path, with `-m` and `anticells_red_mcp.mcp_server.server` as separate arguments. This avoids launching an unconfigured WSL `bash.exe`.
+
+The server uses the native Windows Proactor event loop for pipes, subprocesses, and worker-thread wakeups. If an older installed copy still stalls, rerun the installer and restart the MCP client. Check the connection independently with `.venv\Scripts\python.exe scripts/post_install_smoke.py .`.

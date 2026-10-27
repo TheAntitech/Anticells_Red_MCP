@@ -16,7 +16,9 @@ Covers:
 from __future__ import annotations
 
 import asyncio
+from datetime import timedelta
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -43,17 +45,21 @@ async def _check(root: Path) -> None:
 
     from anticells_red_mcp import __version__
 
-    venv_python = root / ".venv" / "bin" / "python"
     env = {
-        "ANTICELLS_RED_MCP_PYTHON": str(venv_python),
         # The smoke test does not hit any target. Keep the production egress
         # defaults in effect so a regression there surfaces here.
         "ANTICELLS_RED_MCP_MAX_HISTORY": "500",
-        "PATH": "/usr/local/bin:/usr/bin:/bin",
     }
-    params = StdioServerParameters(command="bash", args=[str(root / "run.sh")], env=env)
+    # Keep explicit storage settings so verification uses the install's catalog.
+    for name in ("ANTICELLS_RED_MCP_STATE_DIR", "ANTICELLS_RED_MCP_DATABASE_PATH",
+                 "ANTICELLS_RED_MCP_REPORTS_DIR"):
+        if name in os.environ:
+            env[name] = os.environ[name]
+    params = StdioServerParameters(
+        command=sys.executable, args=["-m", "anticells_red_mcp.mcp_server.server"], env=env,
+    )
     async with stdio_client(params) as (reader, writer):
-        async with ClientSession(reader, writer) as client:
+        async with ClientSession(reader, writer, read_timeout_seconds=timedelta(seconds=30)) as client:
             init = await client.initialize()
             assert init.serverInfo.name == "anticells_red_mcp", init.serverInfo.name
             assert init.serverInfo.version == __version__, (

@@ -29,7 +29,7 @@ bash run.sh
 For a client-launched server, put the variable in the MCP server entry's `env`
 settings. On PowerShell, use
 `$env:ANTICELLS_RED_MCP_TARGETS_FILE = 'C:\absolute\path\targets.json'`.
-The existing Windows launcher limitation is described in
+Native Windows installation and launch instructions are described in
 [troubleshooting](troubleshooting.md#windows-stdio-launch).
 
 A minimal profiles file looks like this:
