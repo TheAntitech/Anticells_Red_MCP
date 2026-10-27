@@ -67,4 +67,4 @@ The [publication review](docs/security-review.md) records findings, fixes, test 
 
 The stdio process runs with the operator's permissions. Use a dedicated account or container when stronger isolation is required. Keep Python, installer tools, and dependencies updated, and repeat checks after changes.
 
-<p align="center"><sub>Maintained by <strong>♢ 𝓜𝖗𝚇₀𝚛𝚍 ⚡🖤</strong></sub></p>
+<p align="center"><sub>by <strong>Wael Rdifi</strong> for <strong>Antitech</strong></sub></p>

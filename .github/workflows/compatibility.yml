@@ -12,14 +12,21 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         python: ['3.10', '3.12']
-    env:
-      ANTICELLS_RED_MCP_STATE_DIR: ${{ runner.temp }}/anticells-state
-      ANTICELLS_RED_MCP_REPORTS_DIR: ${{ runner.temp }}/anticells-state/reports
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+      - name: Configure local state directories
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+
+          state = Path(os.environ['RUNNER_TEMP']) / 'anticells-state'
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as env_file:
+              env_file.write(f'ANTICELLS_RED_MCP_STATE_DIR={state}\n')
+              env_file.write(f'ANTICELLS_RED_MCP_REPORTS_DIR={state / "reports"}\n')
       - name: Install on macOS/Linux
         if: runner.os != 'Windows'
         run: ANTICELLS_RED_MCP_PYTHON="$(command -v python)" bash install.sh --verbose

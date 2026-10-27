@@ -9,7 +9,7 @@
   <code>v1.1.0</code> &nbsp; <code>Python 3.10+</code> &nbsp; <a href="#tools"><code>12&nbsp;MCP&nbsp;tools</code></a> &nbsp; <a href="docs/catalogs.md"><code>194&nbsp;templates</code></a> &nbsp; <a href="SECURITY.md"><code>Default-deny&nbsp;egress</code></a>
 </p>
 
-<p align="center"><strong>♢ 𝓜𝖗𝚇₀𝚛𝚍 ⚡🖤</strong></p>
+<p align="center"><strong>by Wael Rdifi for Antitech</strong></p>
 <p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#documentation">Documentation</a></p>
 
 ---
@@ -152,4 +152,4 @@ See [LICENSE](LICENSE) for the Apache License 2.0 terms included with this repos
 
 ---
 
-<p align="center"><strong>♢ 𝓜𝖗𝚇₀𝚛𝚍 ⚡🖤</strong><br><sub>Anticells Red MCP · Observe. Evaluate. Document.</sub></p>
+<p align="center"><strong>Antitech, Your AI’s Immune System.</strong></p>
