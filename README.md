@@ -10,7 +10,7 @@
 </p>
 
 <p align="center"><strong>by Wael Rdifi for Antitech</strong></p>
-<p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#documentation">Documentation</a></p>
+<p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#ethical-considerations">Ethics</a> · <a href="#documentation">Documentation</a></p>
 
 ---
 
@@ -130,6 +130,18 @@ Exports support JSON, Markdown, and HTML. [Report workflows](docs/reports.md) co
 Operator overrides are documented in the [security policy](SECURITY.md). Keep credentials in private local configuration and review scope before enabling private-network access.
 
 The [verification record](docs/security-review.md) covers the publication security review and subsequent native Windows validation, including **405 passing tests** and a real MCP smoke test. Secret scans and dependency advisory checks apply to the dated publication snapshot; these results do not guarantee zero vulnerabilities.
+
+<a id="ethical-considerations"></a>
+## Ethical considerations
+
+Anticells Red MCP is intended for authorized security research, education, and defensive evaluation. Use findings to improve AI safeguards and protect users.
+
+- **Get explicit authorization.** Test systems you own or have permission to assess. Agree on endpoints, methods, data access, and stopping conditions, and respect provider policies.
+- **Limit operational impact.** Prefer isolated test environments, keep request and iteration limits bounded, and stop if testing disrupts service, affects other users, or creates unexpected costs.
+- **Protect sensitive information.** Prefer synthetic data and credentials with minimal permissions. Restrict access to local databases and reports, and remove secrets and personal information before sharing evidence.
+- **Keep untrusted output contained.** Review model responses and proposed tool calls as evidence. Do not automatically execute returned commands or instructions.
+- **Report findings accurately and responsibly.** Validate heuristic results, distinguish proposed actions from observed effects, and disclose vulnerabilities privately through the [security reporting process](SECURITY.md#report-a-vulnerability).
+- **Avoid harmful use.** Do not use the project for unauthorized access, data theft, impersonation, harassment, or service disruption.
 
 <a id="documentation"></a>
 ## <img src="assets/icons/docs.svg" width="20" height="20" alt=""> Documentation
