@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased - Documentation alignment
+
+- Point HTTPS clone instructions, package metadata, and security-reporting links to `TheAntitech/Anticells_Red_MCP`.
+- Align the project guide with version 1.1.0, native Windows setup, current dependencies, request limits, saved-profile credentials, and session-scoped report listings.
+- Repair deleted-module and license links, describe the included Apache 2.0 license, and distinguish the dated publication review from subsequent Windows verification.
+
 ## Unreleased - Native Windows installation
 
 - Add `install.ps1` and shared Python installation steps with platform-specific virtual-environment paths. Preserve the seven setup checks and exit codes 10-15.

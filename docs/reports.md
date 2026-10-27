@@ -18,13 +18,19 @@ The report database stores complete prompts, generated conversations and tool sc
 
 These examples are arguments to `get_attack_report`, not shell commands. The server exposes twelve tools, including read-only template discovery.
 
-List saved runs, including previous sessions:
+List saved runs in the current MCP session:
 
 ```json
 {"action": "list", "limit": 20, "offset": 0}
 ```
 
-The result includes `total` and `next_offset`. Optionally filter with `session_id`. View a run's statistics and up to 100 evidence records:
+The result includes `total`, `next_offset`, and `scope`. To list a previous session, supply its explicit ID:
+
+```json
+{"action": "list", "session_id": "<session UUID>", "limit": 20}
+```
+
+Use the reports CLI's `list` command to discover saved runs across all sessions. An explicit `run_id` can retrieve an older run directly. View a run's statistics and up to 100 evidence records:
 
 ```json
 {"action": "view", "run_id": "<run UUID>", "format": "detailed"}
@@ -40,7 +46,7 @@ Use `session_id` instead of `run_id` to combine all runs in a session. `summary`
 
 Export replies include `export_id`, filename, absolute local path, MIME type, byte count, SHA-256 checksum, and an MCP resource link. The agent can attach/copy the local file or retrieve the resource. Whether a download button appears depends on the coding agent; MCP does not prescribe that UI.
 
-Resources support listing and whole-file reads up to 1 MiB. For larger files, or agents without filesystem access:
+Resource listings show exports from the current MCP session. Registered export IDs support whole-file reads up to 1 MiB. For larger files, or agents without filesystem access:
 
 ```json
 {"action": "read", "export_id": "<export UUID>", "offset": 0, "length": 65536}
@@ -77,4 +83,4 @@ Saved report access remains available when catalog loading fails. Research calls
 
 All formats use the same report document and statistics. HTML escapes target content and contains no scripts or external assets. Markdown displays evidence literally. JSON normally contains a readable report object. For exceptional legacy Unicode that would change during an ordinary JSON round trip, the whole document uses `encoded_content` with encoding `json-utf8-surrogatepass-base64`. Base64-decode its `data`, decode UTF-8 with `surrogatepass`, then parse JSON to recover the exact original Python values.
 
-Previously lost in-memory reports cannot be recovered. Auxiliary Python-only entry points are not automatically archived. PDF, browser download services, and the native Windows launcher/event-loop fix remain outside this feature.
+Previously lost in-memory reports cannot be recovered. Auxiliary Python-only entry points are not automatically archived. PDF and browser download services are not provided. Native Windows setup and the event-loop fix are included in the current installer; see [installation](installation.md).

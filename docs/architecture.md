@@ -22,7 +22,7 @@ flowchart LR
 
 ## Execution
 
-The console entry point is synchronous and starts an asyncio server. The Bash launcher selects the project environment and resolves source paths independently of the caller's directory. Diagnostics go to stderr; stdout carries JSON-RPC messages.
+The console entry point is synchronous and starts an asyncio server. The installers print client configurations that launch the installed virtual-environment Python directly: `.venv\Scripts\python.exe` on Windows or `.venv/bin/python` on macOS/Linux. The optional macOS/Linux Bash launcher resolves source paths independently of the caller's directory. Windows uses the Proactor event loop for native pipes, subprocesses, and thread callbacks; Unix retains the local self-pipe workaround. Diagnostics go to stderr; stdout carries JSON-RPC messages.
 
 Each endpoint call receives a configuration copy, avoiding cross-talk between concurrent targets. Module clients close when a call ends. Dataclass and dictionary results normalize to JSON records; original Unicode templates serialize with escapes so unpaired surrogates do not break the UTF-8 transport.
 
@@ -44,6 +44,8 @@ Research MCP calls also pin a report run context. `reports/recorder.py` records 
 
 `reports/repository.py` owns migrations, consistent snapshots, export registration, bounded reads, and explicit deletion. `reports/model.py` builds a canonical document for JSON, Markdown, and static HTML. `get_attack_report` retains its legacy default view and adds saved views, listing, exporting, and chunk retrieval. MCP resources resolve only registered export IDs. The `anticells_red_mcp-reports` CLI operates without a catalog or target. See [saved reports](reports.md).
 
+MCP report and export-resource listings default to the current session. Explicit run/session selectors permit saved history retrieval; the reports CLI can discover runs across sessions. In-memory history buffers default to 2,000 records, while saved SQLite evidence remains until explicitly deleted.
+
 All prompt content now comes from SQLite through `catalog/repository.py`. The server pins a complete immutable snapshot before constructing modules for each call or loop. A revision check refreshes the cached snapshot for new calls; active operations retain their original content. Supporting resources and auxiliary catalogs use the same repository. There is no runtime seed fallback. See [catalog configuration and authoring](catalogs.md).
 
 Before MCP starts, `catalog/setup.py` resolves a configured SQLite path or defaults to a per-user application data file. It applies versioned migrations and seeds 496 records: 365 techniques across 21 namespaces and 131 supporting resources. Existing edits are preserved. SQLite write transactions serialize concurrent migrations and publications; reads use consistent transactions in worker threads. Set `ANTICELLS_RED_MCP_CATALOG_AUTO_SETUP=false` to require an initialized file without startup writes. The table below counts the original public entries, whose content, order, duplicate names, and category membership remain unchanged. The CLI can publish additions without adding MCP tools or changing their schemas.
@@ -60,7 +62,9 @@ Regression checks preserve a canonical digest of the original five catalogs. Rel
 
 ## Integration limits
 
-The modules share JSON HTTP transport. Legacy `target_url` calls use optional `ANTICELLS_RED_MCP_TARGET_MODEL` and `ANTICELLS_RED_MCP_TARGET_API_KEY`; authenticated legacy calls are bound to the origin in `ANTICELLS_RED_MCP_TARGET_API_URL`. Custom `target` definitions support method, headers, JSON body, and JSON Pointer response mappings. Supplied bodies replace generated bodies, and custom headers own authentication. Saved definitions bind to their configured origin; inline environment references require the configured API origin. Redirects are disabled. See [target configuration](targets.md).
+The modules share JSON HTTP transport. Legacy `target_url` calls use optional `ANTICELLS_RED_MCP_TARGET_MODEL` and `ANTICELLS_RED_MCP_TARGET_API_KEY`; authenticated legacy calls are bound to the origin in `ANTICELLS_RED_MCP_TARGET_API_URL`. Custom `target` definitions support method, headers, JSON body, and JSON Pointer response mappings. Supplied bodies replace generated bodies, and custom headers own authentication. Inline definitions cannot read `${env.*}`. Environment-backed saved profiles must match the configured API origin and can read explicitly loaded file values or allowlisted process variables. See [target configuration](targets.md).
+
+Primary and auxiliary HTTP clients share destination validation and DNS pinning at connection time. Default policy blocks private/loopback and metadata destinations; TLS verification is enabled, while inherited proxies and automatic redirects are disabled. Outbound budgets default to 20 requests per invocation and 500 per session per minute. The operator can change these controls through the settings in [SECURITY.md](../SECURITY.md).
 
 Default text extraction supports chat-completions messages and simple `content` or `response` fields. Unknown objects and empty text fail scoring. Explicit text-only response mappings skip tool scenarios. The first version uses one HTTP request and one JSON reply per attempt, without streaming, login sequences, token refresh, response-derived variables, or automatic retries. Auxiliary Python-only engines outside the shared transport are deferred.
 

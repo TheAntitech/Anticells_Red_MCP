@@ -57,7 +57,7 @@ Configured secrets are redacted from saved evidence, but target content can stil
 
 ## Report a vulnerability
 
-Use [GitHub private vulnerability reporting](https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/security/advisories/new) when it is enabled. If unavailable, [open an issue requesting a private contact](https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/issues/new) without posting the exploit or sensitive data.
+Use [GitHub private vulnerability reporting](https://github.com/TheAntitech/Anticells_Red_MCP/security/advisories/new) when it is enabled. If unavailable, [open an issue requesting a private contact](https://github.com/TheAntitech/Anticells_Red_MCP/issues/new) without posting the exploit or sensitive data.
 
 Include the affected version, impacted boundary, a minimal reproduction with synthetic values, expected behavior, and observed behavior. Never include live tokens, personal data, or private target responses. Reports are handled on a best-effort basis; no response deadline is promised.
 

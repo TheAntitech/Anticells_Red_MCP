@@ -4,7 +4,7 @@ This repository contains **anticells_red_mcp**, a Python service that lets an MC
 
 For example, an operator can select a model endpoint, submit a group of prompts, inspect the replies, and ask for a session report. The software automates that workflow; interpreting whether a reply demonstrates a real vulnerability still requires review.
 
-This guide describes the checked-out code, whose declared version is **1.0.2**. The project name, Python distribution, console command, import package, and MCP server identity are all `anticells_red_mcp`. Project environment variables use the `ANTICELLS_RED_MCP_` prefix.
+This guide describes the checked-out code, whose declared version is **1.1.0**, including native Windows installation and the hardening controls. The repository is [TheAntitech/Anticells_Red_MCP](https://github.com/TheAntitech/Anticells_Red_MCP). The Python distribution, console command, import package, and MCP server identity are all `anticells_red_mcp`. Project environment variables use the `ANTICELLS_RED_MCP_` prefix.
 
 ## 1. The main concepts
 
@@ -52,14 +52,15 @@ Most standalone tools construct their own module instance. Background work inste
 ## 3. Where to find things
 
 ```text
-anticells_red_mcp/
+Anticells_Red_MCP/
   PROJECT_GUIDE.md                This explanation
   README.md                      Installation and public interface overview
   pyproject.toml                 Package metadata, dependencies, entry point
   requirements.txt               Runtime dependency list
   setup.py                       Compatibility wrapper around setuptools
-  install.sh                     Create a local environment and install
-  run.sh                         Locate the interpreter and start the server
+  install.sh                     macOS/Linux and Git Bash installer entry point
+  install.ps1                    Native Windows PowerShell installer entry point
+  run.sh                         Optional macOS/Linux source launcher
   .env.example                   Example environment variables
   config/
     mcp-client.example.json      Example client connection settings
@@ -75,9 +76,10 @@ anticells_red_mcp/
       targets.py                 Target definitions, variables, origin binding
       engine.py                  AttackResult and shared execution engine
       relentless_loop.py         Six background strategies
-      local_ipc.py               Custom asyncio event-loop wakeup handling
+      local_ipc.py               Windows Proactor loop and Unix wakeup handling
+      endpoint_safety.py         Destination policy and DNS validation
+      limits.py                  In-memory history and outbound request caps
       orchestrator.py            Additional Python campaign interface
-      reporting.py               Additional JSON, Markdown, and HTML exporters
     modules/
       fingerprint/               Model/provider response probes
       jailbreaks/                Jailbreak prompt templates
@@ -86,7 +88,11 @@ anticells_red_mcp/
       mutation/                  Prompt variation and genetic operations
       utils/                     HTTP transport, classification, logging, metrics
   tests/                         Runtime, execution, and stdio regression tests
-  scripts/audit_publication.py    Pattern scan of indexed and historical Git blobs
+  scripts/
+    install.py                   Shared cross-platform installation steps
+    post_install_smoke.py        Real MCP connection and local-tool checks
+    audit_publication.py         Pattern scan of indexed and historical Git blobs
+  .github/workflows/compatibility.yml  Windows/macOS/Linux installation and tests
   assets/                        Project artwork
 ```
 
@@ -134,6 +140,8 @@ To run just one discovered template, use `execute_attack_template` with its stab
 
 The scanner sends prompts and examines response text, headers, and model fields for recognizable signatures. It sorts the chosen probes by weight and attempts up to `intensity × 6` probes, capped by the number available. The default intensity therefore permits up to 18 probes.
 
+The separate outbound budget defaults to 20 requests per tool invocation and 500 requests per session per minute. These limits also apply at higher fingerprint intensities; selecting more probes does not override them.
+
 Model names, architecture descriptions, context-window sizes, and safety labels are selected from a hard-coded candidate table. They are inferred labels, not measurements or authenticated identity information.
 
 ### Jailbreak templates
@@ -152,7 +160,7 @@ The categories are `direct`, `indirect`, `multi_stage`, `persistence`, `tool_poi
 
 In the primary implementation, the payload is placed in a **system-role chat message**, followed by a fixed user message asking the model to process it. This tests responses to those messages. It does not insert a document into a retriever, alter a browser page, or modify persistent target memory.
 
-`payload_override` replaces the payload of every selected technique. It does not reduce the selection to one request. For example, an override with `injection_type="all"` can submit the same replacement text for all 53 selected entries.
+`payload_override` replaces the payload of every selected technique. It does not reduce the selection to one request. For example, `injection_type="all"` selects all 53 entries with that replacement text, but the default per-call budget still caps outbound requests at 20. Use `execute_attack_template` for one exact template.
 
 ### Tool-call scenarios
 
@@ -204,6 +212,8 @@ The default is **one iteration**, even for the mode named `infinite`. Explicitly
 
 An iteration is a round or generation, not a single HTTP request. Full cycles can send many requests and add chain attempts. `ANTICELLS_RED_MCP_WORKERS` limits the standalone jailbreak path; it is not a global concurrency or spending limit for every loop strategy.
 
+The request caps in [limits.py](src/anticells_red_mcp/mcp_server/limits.py) apply independently of the iteration count. Setting `max_iterations=0` leaves those caps active. In-memory history buffers retain at most 2,000 records by default; persisted SQLite evidence is unaffected by trimming.
+
 Only one background loop may be active. Starting another is rejected until the current task finishes or is stopped. Stopping cancels and awaits the task. A subsequent start gets a fresh engine, and previously recorded results remain available in the same server session.
 
 The strategy names describe template orchestration. The evolutionary loop ranks candidates with local rules rather than training model weights, and some mutation/combination actions in other strategies generate values without feeding them into subsequent requests.
@@ -236,9 +246,9 @@ That rate needs careful interpretation. Fingerprint probes can be labeled succes
 
 The three legacy inline report formats return JSON through MCP. `summary` shows up to 20 compact successful entries; `json` shows up to 10 successful records; `detailed` shows up to 100. They are different views, not a complete export of every recorded response.
 
-Full research evidence is automatically saved in a separate `reports.sqlite3`, including unsuccessful attempts, skipped scenarios, complete normalized replies, proposed tool calls, fingerprint probes, and mutation candidates. The legacy default report remains a current-session view; explicit `run_id` or `session_id` selectors retrieve saved history. `action="list"` lists runs across restarts. `action="export"` creates complete JSON, Markdown, or HTML files under the report directory and returns a local path and MCP resource link. `action="read"` retrieves registered exports in base64 byte chunks. See [report setup, retrieval, backup, and cleanup](docs/reports.md).
+Full research evidence is automatically saved in a separate `reports.sqlite3`, including unsuccessful attempts, skipped scenarios, complete normalized replies, proposed tool calls, fingerprint probes, and mutation candidates. The legacy default report remains a current-session view; explicit `run_id` or `session_id` selectors retrieve saved history. `action="list"` lists the current session by default; pass an explicit `session_id` to list another session, or use the reports CLI to discover runs across sessions. `action="export"` creates complete JSON, Markdown, or HTML files under the report directory and returns a local path and MCP resource link. `action="read"` retrieves registered exports in base64 byte chunks. See [report setup, retrieval, backup, and cleanup](docs/reports.md).
 
-The recorder preserves catalog revision and run provenance, retries failed writes every five seconds, and warns when evidence remains unsaved in memory. Session locks mark abandoned work interrupted. History and files remain until explicitly deleted through `anticells_red_mcp-reports`; active runs cannot be deleted. The new export renderer uses the same statistics in every format and does not assign vulnerability severity from confidence. The older auxiliary [ReportGenerator](src/anticells_red_mcp/mcp_server/reporting.py) remains a separate Python-only API.
+The recorder preserves catalog revision and run provenance, retries failed writes every five seconds, and warns when evidence remains unsaved in memory. Session locks mark abandoned work interrupted. Saved history and files remain until explicitly deleted through `anticells_red_mcp-reports`; active runs cannot be deleted. [reports/model.py](src/anticells_red_mcp/reports/model.py) renders the same statistics in every export format and does not assign vulnerability severity from confidence. HTML escapes target evidence and uses a restrictive Content Security Policy; Markdown renders evidence literally. The unused legacy `mcp_server/reporting.py` exporter was removed in the hardening pass.
 
 ## 8. Configuration and endpoint compatibility
 
@@ -250,18 +260,25 @@ The recorder preserves catalog revision and run provenance, retries failed write
 | --- | --- |
 | `ANTICELLS_RED_MCP_REPORTS_DIR` | Optional private report directory; defaults to `<state directory>/reports`, with generated files in `exports/`. |
 | `ANTICELLS_RED_MCP_TARGET_MODEL` | Optional model identifier added to chat requests. |
-| `ANTICELLS_RED_MCP_TARGET_API_URL` | Origin authorized for the legacy bearer credential and inline environment references. Endpoint tools require exactly one of `target_url` or `target`. |
+| `ANTICELLS_RED_MCP_TARGET_API_URL` | Origin authorized for the legacy bearer credential and environment-backed saved profiles. Endpoint tools require exactly one of `target_url` or `target`. |
 | `ANTICELLS_RED_MCP_TARGET_API_KEY` | Optional bearer credential. Authenticated public tool calls require a matching configured origin. |
 | `ANTICELLS_RED_MCP_TARGETS_FILE` | JSON file with saved profiles and optional `env_files`. |
-| `ANTICELLS_RED_MCP_ENV_FILE` | Explicit environment file, including for inline-only setups. |
+| `ANTICELLS_RED_MCP_ENV_FILE` | Explicit file for server settings and saved-profile template values. |
+| `ANTICELLS_RED_MCP_TEMPLATE_ENV` | Comma-separated names of process variables exposed to saved-profile `${env.*}` references; empty by default. |
+| `ANTICELLS_RED_MCP_ALLOW_PRIVATE_TARGETS` | Defaults to `false`; explicit opt-in for owned private-network labs. |
+| `ANTICELLS_RED_MCP_MAX_REQUESTS_PER_CALL` | Defaults to `20` outbound requests per invocation; `0` disables this cap. |
+| `ANTICELLS_RED_MCP_MAX_REQUESTS_PER_SESSION_PER_MIN` | Defaults to `500` outbound requests per session per minute; `0` disables this cap. |
+| `ANTICELLS_RED_MCP_MAX_HISTORY` | Defaults to `2000` in-memory records per configured history buffer; saved evidence is unaffected. |
 | `ANTICELLS_RED_MCP_WORKERS` | Defaults to `8`; controls concurrency in the standalone jailbreak implementation. Must be at least one. |
 | `ANTICELLS_RED_MCP_MUTATION_RATE` | Defaults to `0.3`; used by background mutation logic. |
-| `ANTICELLS_RED_MCP_PYTHON` | Used by the Bash scripts to select an interpreter. |
+| `ANTICELLS_RED_MCP_PYTHON` | Selects the installer or optional Bash launcher's interpreter. Printed client configurations use an absolute Python command instead. |
 | `ANTICELLS_RED_MCP_TARGET_PROVIDER` | Loaded into configuration, but does not select a different provider adapter in the main transport. |
 | `ANTICELLS_RED_MCP_PORT` | Defaults to `9190`; does not make the current stdio server listen on that port. |
 | `ANTICELLS_RED_MCP_LOG_DIR` | Loaded into configuration; the primary logger writes to stderr and does not automatically create a file log there. |
 
-Target URLs must use HTTP or HTTPS and must not contain embedded credentials or fragments. When a bearer credential is configured, the public handler checks the URL's **scheme, host, and port** against `ANTICELLS_RED_MCP_TARGET_API_URL`. It permits different paths on the same origin. This check is in the MCP handler, so direct Python use of lower-level modules does not automatically receive the same validation.
+Target URLs must use HTTP or HTTPS and must not contain embedded credentials or fragments. When a bearer credential is configured, the public handler checks the URL's **scheme, host, and port** against `ANTICELLS_RED_MCP_TARGET_API_URL`. It permits different paths on the same origin. The shared HTTP transport also validates destinations and pins approved addresses at connection time. Default policy blocks private, loopback, link-local, metadata, multicast, reserved, and unspecified destinations; TLS verification stays enabled, and inherited proxies and automatic redirects are disabled. See [SECURITY.md](SECURITY.md) for operator overrides and their limits.
+
+Inline target definitions cannot read `${env.*}`. Operator-authored saved profiles can read explicitly loaded file values and allowlisted process variables, and environment-backed profiles must match the configured API origin. Moving credentials to a different origin requires a separate authorized configuration.
 
 The adapter sends JSON chat requests containing `messages`, optional `model`, and operation-specific fields such as `temperature` or `tools`. Supported text replies include `choices[0].message.content`, top-level `content`, or top-level `response`. Empty or unsupported replies fail scoring. Tool scenarios expect a compatible function-calling response structure.
 
@@ -271,17 +288,32 @@ Streaming, login sequences, token refresh, response-derived session variables, a
 
 ## 9. Installing and connecting it
 
-The package declares **Python 3.10 or later**. Its runtime dependencies are `mcp`, `httpx`, `rich`, `structlog`, `jsonschema`, and `python-dotenv`. The development extra adds `pytest`.
+The package declares **Python 3.10 or later**. Its runtime dependencies are `mcp`, `httpx`, `httpcore`, `anyio`, `rich`, `structlog`, `jsonschema`, and `python-dotenv`. The development extra adds `pytest`.
 
-The repository's helper scripts assume a Unix-style environment layout with `.venv/bin/python`. In a Bash environment with a compatible Python interpreter, run these from the repository root:
+Clone the current repository over HTTPS:
+
+```text
+git clone https://github.com/TheAntitech/Anticells_Red_MCP.git
+cd Anticells_Red_MCP
+```
+
+On macOS/Linux, install from Bash:
 
 ```bash
 bash install.sh
-# The installer prepares SQLite and the catalog automatically.
-bash run.sh
 ```
 
-The installer creates `.venv` and installs the package. The launcher prefers `ANTICELLS_RED_MCP_PYTHON` when set, otherwise `.venv/bin/python`, then `venv/bin/python`, then `python3`. It adds the checkout's `src` directory to `PYTHONPATH` and starts the module.
+On native Windows, install from PowerShell:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+The execution-policy setting applies only to that process. Both entry points use [scripts/install.py](scripts/install.py) to create or reuse `.venv`, install dependencies and the package, initialize SQLite, check the default egress policy, and exercise the real MCP connection. They print client configurations that launch the installed Python module directly. Windows uses `.venv\Scripts\python.exe`; macOS/Linux use `.venv/bin/python`. Bash and WSL are unnecessary for native Windows setup.
+
+Use `--verbose`, `--lab`, and `--reinstall` with Bash/Python, or `-Verbose`, `-Lab`, and `-Reinstall` with PowerShell. Lab mode includes the private-network opt-in only in the printed client configuration. Reinstall replaces the project virtual environment and preserves the separate state directory. Set `ANTICELLS_RED_MCP_PYTHON` to select a compatible interpreter. See the [installation guide](docs/installation.md) for manual setup, updates, and exit codes.
+
+The optional macOS/Linux `run.sh` helper prefers `ANTICELLS_RED_MCP_PYTHON` when set, otherwise `.venv/bin/python`, then `venv/bin/python`, then `python3`. It adds the checkout's `src` directory to `PYTHONPATH` and starts the module. Windows uses the native Proactor event loop; Unix retains the local self-pipe workaround.
 
 The installed package also exposes these entry points:
 
@@ -292,22 +324,20 @@ python -m anticells_red_mcp.mcp_server.server
 
 Use them with the interpreter or environment where the package was installed. They start the same stdio service.
 
-For this Windows checkout, the system Python launcher lists Python 3.9, but a Python 3.12 interpreter managed by `uv` was also located and used to create a local `.venv` for validation. The Bash installer does not account for native Windows virtual environments, which use `Scripts` instead of `bin`. A WSL/Linux environment with compatible Python follows the supplied script layout. End-to-end stdio validation on this Windows setup remains incomplete; the Bash launch test fails on both the original code and the renamed code.
-
 An MCP client configuration can follow [the existing example](config/mcp-client.example.json):
 
 ```json
 {
   "mcpServers": {
     "anticells_red_mcp": {
-      "command": "bash",
-      "args": ["/absolute/path/anticells_red_mcp/run.sh"]
+      "command": "/absolute/path/Anticells_Red_MCP/.venv/bin/python",
+      "args": ["-m", "anticells_red_mcp.mcp_server.server"]
     }
   }
 }
 ```
 
-Replace the path with one accessible to the selected Bash environment, and adapt the outer configuration to the client. Reload the connection and check that the client discovers twelve tools.
+Replace the command with your virtual environment's absolute Python path. For Windows, use the escaped `.venv\\Scripts\\python.exe` path printed by the installer; no shell wrapper is needed. Adapt the outer configuration to the client, reload the connection, and check that it discovers twelve tools. See [client setup](docs/clients.md) for the Windows and OpenCode examples.
 
 These local calls check the interface without contacting a target endpoint:
 
@@ -338,6 +368,8 @@ For a client-launched process, set those values in the client's server environme
 | [test_targets.py](tests/test_targets.py) | Profile/env loading, typed templates, exact HTTP bodies, custom replies, origin restrictions, isolated calls/loops, skipped counts, and MCP session integration. |
 | [test_reports.py](tests/test_reports.py) | Persistent evidence, isolated runs, recovery, exports, credential redaction, chunks, and deletion. |
 | [test_stdio.py](tests/test_stdio.py) | Actual MCP subprocess communication, launch from another directory, all twelve tools with mocked HTTP, and report resources/exports. |
+| [test_local_ipc.py](tests/test_local_ipc.py) | Worker-thread wakeups and asynchronous subprocess pipes under the production event-loop policy. |
+| [test_hardening.py](tests/test_hardening.py), [test_safe_http.py](tests/test_safe_http.py) | Destination policy, DNS pinning, request/history caps, credentials, and report isolation. |
 | [test_template_listing.py](tests/test_template_listing.py) | Read-only discovery, pagination, filters, exact Unicode, disabled/auxiliary entries, publication refresh, and revision guards. |
 | [test_template_compatibility.py](tests/test_template_compatibility.py) | Target response mappings, request rendering, execution skip parity, function schemas, safe diagnostics, isolated queries, and newly published templates. |
 | [test_template_execution.py](tests/test_template_execution.py) | Exact ID execution, duplicate names, one-request behavior, local mutation, skips/errors, complete saved evidence, recovery, cleanup, and snapshot isolation. |
@@ -347,21 +379,21 @@ For a client-launched process, set those values in the client's server environme
 | [test_catalog_setup.py](tests/test_catalog_setup.py) | Automatic SQLite setup, migration rollback, private files, old-configuration detection, and exact JSON backup/restore. |
 | [conftest.py](tests/conftest.py) | Resets server state between tests and installs the custom asyncio policy. |
 
-In a compatible environment, the documented development commands are:
+On macOS/Linux, the development commands are:
 
 ```bash
 .venv/bin/python -m pip install '.[dev]'
 .venv/bin/python -m pytest -q
-python3 scripts/audit_publication.py
+.venv/bin/python scripts/audit_publication.py
 ```
+
+On Windows, use `.venv\Scripts\python.exe` for those commands. [The compatibility workflow](.github/workflows/compatibility.yml) configures installation and tests on Windows, macOS, and Linux with Python 3.10 and 3.12.
 
 The publication audit inspects Git-index and reachable-history blobs for common credential patterns and sensitive filenames. It is a pattern-based publication check, not a test of model behavior. The regression suite uses mocks or local MCP communication; it does not establish effectiveness against hosted models.
 
-The entry point, configuration, primary module execution paths, loop strategies, utilities, and tests were inspected. After the configurable-target changes, **158 runtime, execution, and target tests passed on Python 3.12**, including the test that verifies all **194 catalog entries** against their original digest and an MCP client/server session test. Installed package metadata, the console entry point, environment settings, exported report identities, and local documentation links were also checked.
+Native Windows validation on 2026-10-27 passed **405 tests on Python 3.12.14**. The real post-install MCP check completed the handshake, discovered all twelve tools and 194 public templates, and exercised local mutation, reports, and stop-loop acknowledgment. A fresh installation in a path containing spaces and reinstall checks also passed; reinstall preserved the catalog. These are local Windows results; the workflow configures the other platform checks. The earlier publication security review and its dated scans are recorded separately in [docs/security-review.md](docs/security-review.md).
 
-The saved-report implementation passed **264 tests in Linux**, including real MCP stdio export/resource checks, restart recovery, concurrent processes, and the original catalog digest. The report suite also passed 23 tests on Windows using the standard test event loop; the production Windows launcher remains unchanged.
-
-SQLite integration tests use isolated temporary files and need no external service. MCP stdio checks run in a compatible Linux/Bash environment. Native Windows stdio still has the pre-existing launcher/event-loop issue and is deferred separately. No live target-model assessments were performed.
+SQLite integration tests use isolated temporary files and need no external service. No live target-model assessments were performed during this validation.
 
 ## 11. A useful code-reading order
 

@@ -1,6 +1,6 @@
 # Publication security review
 
-Review date: 2026-10-25. Project version: 1.1.0.
+Publication review date: 2026-10-25. Project version: 1.1.0. Subsequent native Windows verification is recorded separately below.
 
 This review checks publication contents and selected application trust boundaries.
 It does not certify that the project has no vulnerabilities.
@@ -33,6 +33,17 @@ It does not certify that the project has no vulnerabilities.
 - Publication excludes local `.env` values, private keys, credential stores, runtime
   databases/evidence, caches, build outputs and nested Git metadata. The tracked
   `.env.example` contains empty settings and descriptive examples.
+
+## Subsequent native Windows verification
+
+On 2026-10-27, the native Windows installer and event-loop changes were checked with Python 3.12.14:
+
+- Full test suite: 405 passed, including the new worker-thread wakeup/subprocess-pipe regression check.
+- `install.ps1` completed all seven stages. The real MCP smoke test discovered all 12 tools and 194 public templates and exercised local mutation, report statistics, and stop-loop acknowledgment.
+- A fresh installation in a path containing spaces passed. PowerShell and Git Bash reinstall checks preserved the catalog, and interpreter discovery reused the base Python safely.
+- The compatibility workflow configures Windows, macOS, and Linux installation/tests with Python 3.10 and 3.12. The local results above cover Windows; consult workflow results for the other platforms.
+
+These installation checks do not refresh the earlier secret scans or dependency advisory results, and they do not assess a live target model.
 
 ## Static-analysis triage
 

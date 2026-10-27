@@ -6,6 +6,8 @@ The five endpoint tools (`fingerprint_llm`, `jailbreak_attack`, `prompt_injectio
 - `target_url`: the existing chat-completions request and response format.
 - `target`: a saved profile name or an inline JSON definition.
 
+`get_compatible_templates` and `get_fingerprint_profile` also accept these selectors. `execute_attack_template` requires a selector for remote templates and accepts neither selector for local mutation.
+
 When using `target`, optional `target_variables` replaces matching definition
 variables. It must be a JSON object. Overrides are shallow: replacing an object
 variable replaces the whole object. Configuration is copied for each call or
@@ -16,19 +18,21 @@ background loop, so concurrent operations keep their own variable values.
 Copy [config/targets.example.json](../config/targets.example.json) to your own
 configuration file and change the URLs. The example selects `../.env`, relative
 to the JSON file in `config/`. Create that private file with `API_KEY=...`, or
-remove `env_files` and provide the credential through the process environment.
+remove `env_files`, provide the credential through the process environment, and include its name in `ANTICELLS_RED_MCP_TEMPLATE_ENV`.
 Do not commit your private configuration or credentials.
 
 Point the server at your JSON file through its process environment:
 
 ```bash
 export ANTICELLS_RED_MCP_TARGETS_FILE='/absolute/path/to/targets.json'
+export ANTICELLS_RED_MCP_TARGET_API_URL='https://gateway.example/chat'
 bash run.sh
 ```
 
 For a client-launched server, put the variable in the MCP server entry's `env`
 settings. On PowerShell, use
 `$env:ANTICELLS_RED_MCP_TARGETS_FILE = 'C:\absolute\path\targets.json'`.
+Set `$env:ANTICELLS_RED_MCP_TARGET_API_URL = 'https://gateway.example/chat'` for the environment-backed example profile as well. Replace the example URL with your authorized endpoint in both settings and the profile.
 Native Windows installation and launch instructions are described in
 [troubleshooting](troubleshooting.md#windows-stdio-launch).
 
@@ -70,14 +74,13 @@ hyphens. A missing or malformed selected file is a configuration error.
 
 ## Inline definitions
 
-An inline definition uses the same fields, directly in an MCP call:
+An inline definition uses the same request fields directly in an MCP call, without `${env.*}` references:
 
 ```json
 {
   "target": {
     "url": "https://gateway.example/chat",
     "method": "PUT",
-    "headers": {"Authorization": "Bearer ${env.API_KEY}"},
     "body": {"question": "${request.prompt}", "limit": "${vars.limit}"},
     "variables": {"limit": 128},
     "response": {"text": "/result/answer"}
@@ -87,12 +90,9 @@ An inline definition uses the same fields, directly in an MCP call:
 }
 ```
 
-This example is for `prompt_injection`. To use environment values in inline
-definitions, configure `ANTICELLS_RED_MCP_TARGET_API_URL` with the authorized
-origin, for example `https://gateway.example/chat`.
+This example is for `prompt_injection` against an endpoint that does not require authentication. Inline `${env.*}` references are rejected with `inline_environment_reference_forbidden`, even when an API origin or environment allowlist is configured. For credentials, use an operator-authored saved profile and configure `ANTICELLS_RED_MCP_TARGET_API_URL` to match that profile's origin.
 
-For setups without a profiles file, `ANTICELLS_RED_MCP_ENV_FILE` explicitly
-selects one environment file. Relative paths in these process settings resolve
+`ANTICELLS_RED_MCP_ENV_FILE` explicitly selects one file for server settings and saved-profile template values. Relative paths in these process settings resolve
 from the server's working directory; absolute paths are recommended. Inline
 definitions cannot select files, import Python, or run expressions.
 
@@ -123,7 +123,7 @@ key automatically; put authentication in their headers explicitly.
 
 | Placeholder | Value |
 | --- | --- |
-| `${env.API_KEY}` | String from explicitly selected environment files or the process environment. |
+| `${env.API_KEY}` | Saved-profile-only string from explicitly selected environment files or process variables named in `ANTICELLS_RED_MCP_TEMPLATE_ENV`. |
 | `${vars.workspace}` | Definition value, after per-call overrides. |
 | `${request.prompt}` | Actual prompt for this attempt; injection uses the injection payload itself. |
 | `${request.messages}` | Complete generated conversation array. |
@@ -149,16 +149,15 @@ text inside a prompt or substituted variable stays literal. `$${env.API_KEY}`
 renders as the literal text `${env.API_KEY}`. Quotes, backslashes, Unicode, and
 newlines in JSON bodies are serialized safely; no expression evaluation occurs.
 
-No `.env` file is discovered automatically, and loading never changes
-`os.environ`. File precedence, from lowest to highest:
+No `.env` file is discovered automatically, and loading never changes `os.environ`. Saved-profile template-value precedence, from lowest to highest:
 
 1. `ANTICELLS_RED_MCP_ENV_FILE`, when explicitly set in the process environment.
 2. Files listed in the profiles file's `env_files`, in order; later files win.
-3. Process environment variables, including explicitly empty values.
+3. Process environment variables named in `ANTICELLS_RED_MCP_TEMPLATE_ENV`, including explicitly empty values.
 
 Profile `env_files` paths resolve relative to the profiles JSON file. Environment
 file values are not interpolated themselves. Selected environment files can also
-provide normal server settings such as the model or authorized inline origin.
+provide normal server settings such as the model or authorized API origin. Server settings use the full process environment, with process values taking precedence; this does not expose the full environment to target templates.
 
 ## Response mappings
 
@@ -218,11 +217,7 @@ An explicit text-only response mapping excludes tool scenarios; a tools-only map
 
 ## Origin restrictions and errors
 
-Saved profiles bind environment-derived values to the origin of their configured
-URL, rendered with their default variables. Overrides cannot change its scheme,
-host, or port. Provide defaults for variables used to establish that origin.
-Inline definitions using `${env...}` require the origin configured by
-`ANTICELLS_RED_MCP_TARGET_API_URL`. The origin is checked again for each rendered
+Saved profiles bind environment-derived values to the origin of their configured URL, rendered with their default variables. An environment-backed profile must also match `ANTICELLS_RED_MCP_TARGET_API_URL`, or it is rejected with `profile_environment_origin_not_authorized`. Overrides cannot change its scheme, host, or port. Provide defaults for variables used to establish that origin. Inline definitions cannot read `${env.*}`. The origin is checked again for each rendered
 request. Request placeholders and overrides cannot move credentials elsewhere;
 redirects are disabled. Paths and query strings may vary within the bound origin.
 
@@ -243,6 +238,8 @@ to generated request fields are checked before the affected request. A backgroun
 configuration error stops the loop and appears in `get_attack_report` under
 `configuration_error`, without becoming a failed model attempt. HTTP errors and
 malformed target replies remain unsuccessful attempts. Requests are not retried.
+
+The default network policy blocks private, loopback, link-local, and metadata destinations and pins approved addresses at connection time. Request budgets default to 20 outbound requests per invocation and 500 per session per minute. See [SECURITY.md](../SECURITY.md) for explicit lab overrides and request limits.
 
 ## Migration and scope
 

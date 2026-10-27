@@ -18,7 +18,7 @@
 
 | Research stage | What you get |
 | :--- | :--- |
-| **Explore** | 194 public templates across five modules, with 302 supporting resources |
+| **Explore** | 194 public templates across five modules, 171 auxiliary techniques, and 131 supporting resources |
 | **Evaluate** | Single-template execution, fingerprint hints, and bounded research loops |
 | **Document** | Local SQLite evidence with JSON, Markdown, and escaped HTML exports |
 
@@ -29,13 +29,23 @@
 
 **Requires:** Python 3.10+ and Git. Use PowerShell on Windows or Bash on macOS/Linux. SQLite is included with Python.
 
+On macOS/Linux:
+
 ```bash
-git clone git@github.com:Wael-Rd/Anticells_Red_MCP-1.0.0.git Anticells_Red_MCP
+git clone https://github.com/TheAntitech/Anticells_Red_MCP.git
 cd Anticells_Red_MCP
 bash install.sh
 ```
 
-On native Windows, run `powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1` from the cloned repository instead of `bash install.sh`. This execution-policy setting applies only to that process.
+On native Windows:
+
+```powershell
+git clone https://github.com/TheAntitech/Anticells_Red_MCP.git
+cd Anticells_Red_MCP
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+This execution-policy setting applies only to that process.
 
 The installer creates `.venv`, installs the package, initializes the catalog, checks the default egress policy, and runs an MCP smoke test. It then prints client configuration.
 
@@ -119,7 +129,7 @@ Exports support JSON, Markdown, and HTML. [Report workflows](docs/reports.md) co
 
 Operator overrides are documented in the [security policy](SECURITY.md). Keep credentials in private local configuration and review scope before enabling private-network access.
 
-The [publication review](docs/security-review.md) records **404 passing tests**, a built-wheel MCP smoke test, secret scans, and dependency advisory checks for the reviewed revision. These are version-specific verification results, not a guarantee of zero vulnerabilities.
+The [verification record](docs/security-review.md) covers the publication security review and subsequent native Windows validation, including **405 passing tests** and a real MCP smoke test. Secret scans and dependency advisory checks apply to the dated publication snapshot; these results do not guarantee zero vulnerabilities.
 
 <a id="documentation"></a>
 ## <img src="assets/icons/docs.svg" width="20" height="20" alt=""> Documentation
@@ -138,7 +148,7 @@ The [publication review](docs/security-review.md) records **404 passing tests**,
 
 ## <img src="assets/icons/license.svg" width="20" height="20" alt=""> License
 
-No open-source license is currently granted. See [LICENSE.md](LICENSE.md) for the repository's licensing status and third-party notice.
+See [LICENSE](LICENSE) for the Apache License 2.0 terms included with this repository.
 
 ---
 

@@ -7,14 +7,16 @@ Python 3.10+ and Git are required. Use PowerShell on native Windows and Bash on 
 On macOS/Linux:
 
 ```bash
-git clone git@github.com:Wael-Rd/Anticells_Red_MCP-1.0.0.git Anticells_Red_MCP
+git clone https://github.com/TheAntitech/Anticells_Red_MCP.git
 cd Anticells_Red_MCP
 bash install.sh
 ```
 
-On native Windows, clone the repository, enter its directory, and run:
+On native Windows:
 
 ```powershell
+git clone https://github.com/TheAntitech/Anticells_Red_MCP.git
+cd Anticells_Red_MCP
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
@@ -58,9 +60,11 @@ py -3 -m venv .venv
 .venv\Scripts\anticells_red_mcp-doctor.exe
 ```
 
-First-time setup seeds 496 records: 194 public templates and 302 supporting resources. Repeating setup preserves existing catalog data.
+First-time setup seeds 496 records: 365 techniques (194 public templates and 171 auxiliary entries), plus 131 supporting resources. Repeating setup preserves existing catalog data.
 
 The project dependencies live in `.venv`. The catalog and reports use a separate per-user application data directory unless configured otherwise. See [.env.example](../.env.example) for storage settings; the example file is not loaded automatically.
+
+Other guides show CLI names such as `anticells_red_mcp-reports`. If the virtual environment is not activated, prefix those commands with `.venv/bin/` on macOS/Linux, or use `.venv\Scripts\<command>.exe` on Windows.
 
 ## Verify the MCP connection
 

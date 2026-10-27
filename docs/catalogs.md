@@ -151,7 +151,7 @@ The default file is `catalog.sqlite3` in the user's application data directory:
 
 Agents running under the same user share this file. Set `ANTICELLS_RED_MCP_STATE_DIR` to use a different default directory, or `ANTICELLS_RED_MCP_DATABASE_PATH` to choose a specific SQLite file. An explicit file path takes precedence. Use an absolute path on a local disk outside a synchronized source checkout. SQLite URIs, connection URLs, and `:memory:` are not accepted. The database persists after the agent exits.
 
-The Bash installer prepares the catalog in advance. Installed-package users may optionally do the same:
+The Bash and PowerShell installers prepare the catalog in advance. Installed-package users may optionally do the same:
 
 ```bash
 anticells_red_mcp-catalog setup

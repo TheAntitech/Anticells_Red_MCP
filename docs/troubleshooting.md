@@ -38,17 +38,23 @@ The default budget is six requests. Set `intensity` from 1 to 5 for a larger bud
 
 ## The server is idle in a terminal
 
-`run.sh` starts a stdio server. It waits for MCP requests instead of showing a menu. Configure an MCP client and check that it discovers twelve tools.
+The installed module starts a stdio server. It waits for MCP requests instead of showing a menu. Configure an MCP client and check that it discovers twelve tools. The optional macOS/Linux `run.sh` helper starts the same service.
 
 ## The client shows disabled or disconnected
 
 Enable the local server entry in your client's settings, verify the absolute Python path, and reload the MCP connection. Use the client's connection status and stderr logs to inspect startup errors. Use the virtual-environment Python with `-m anticells_red_mcp.mcp_server.server`; see [client setup](clients.md).
 
-Install dependencies with `bash /absolute/path/anticells_red_mcp/install.sh`. `run.sh` prefers `.venv/bin/python`, then the older `venv/bin/python`, then `python3`. Set `ANTICELLS_RED_MCP_PYTHON` in the client's environment to choose another interpreter.
+Install dependencies with `bash install.sh` on macOS/Linux or `powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1` on Windows. Printed configurations launch the absolute virtual-environment Python path directly. For the optional macOS/Linux `run.sh` helper, `ANTICELLS_RED_MCP_PYTHON` overrides its `.venv/bin/python`, `venv/bin/python`, and `python3` fallbacks.
 
 ## Paths with spaces fail
 
-Pass the script path as one argument, as shown in the JSON example. In a shell, quote the script path:
+Use the installer-generated JSON so backslashes are escaped and the Python command and module arguments are separate values. Do not add shell quotes inside the JSON command value. To launch directly from PowerShell, use the call operator with a quoted Python path:
+
+```powershell
+& 'C:\path with spaces\Anticells_Red_MCP\.venv\Scripts\python.exe' -m anticells_red_mcp.mcp_server.server
+```
+
+For the optional macOS/Linux helper, quote the script path:
 
 ```bash
 bash '/path with spaces/anticells_red_mcp/run.sh'
@@ -62,9 +68,11 @@ For `target_url`, confirm that the endpoint accepts chat-completions JSON. Set `
 
 Use exactly one of `target` or `target_url`; `target_variables` requires `target`. `missing_variable` means a referenced environment, definition, or generated request field is absent. Request fields differ by module. `embedded_container_variable` means an object or array was inserted into a larger string: use a whole-value placeholder instead. `invalid_response_pointer` means a mapping is not a valid JSON Pointer. Missing response fields are failed replies, not configuration errors.
 
-`unknown_target_profile` means the selected name was not loaded. Explicitly set `ANTICELLS_RED_MCP_TARGETS_FILE` and restart the server after file edits. Relative `env_files` paths start at the profiles file's directory. There is no automatic `.env` discovery. Later files override earlier ones, and process values override files.
+`unknown_target_profile` means the selected name was not loaded. Explicitly set `ANTICELLS_RED_MCP_TARGETS_FILE` and restart the server after file edits. Relative `env_files` paths start at the profiles file's directory. There is no automatic `.env` discovery. Later files override earlier ones; process variables named in `ANTICELLS_RED_MCP_TEMPLATE_ENV` override saved-profile template values. Server settings use the full process environment.
 
-`inline_environment_origin_not_authorized` requires a matching `ANTICELLS_RED_MCP_TARGET_API_URL`. `target_origin_changed` means an override or request value changed a bound scheme, host, or port. Configure a separate saved profile for the other origin. In a background loop, configuration errors stop work and appear in the report's `configuration_error` field.
+`inline_environment_reference_forbidden` means an inline definition attempted to read `${env.*}`; use a saved profile for credentials. `profile_environment_origin_not_authorized` requires `ANTICELLS_RED_MCP_TARGET_API_URL` to match the environment-backed saved profile's origin. `target_origin_changed` means an override or request value changed a bound scheme, host, or port. Configure a separate authorized saved profile for the other origin. In a background loop, configuration errors stop work and appear in the report's `configuration_error` field.
+
+`env_file_unavailable` means an explicitly selected environment file could not be read. Correct `ANTICELLS_RED_MCP_ENV_FILE` or the profile's `env_files` entry, or remove the selection if it is unused. Copying `.env.example` alone does not load it.
 
 ## Invalid arguments
 
@@ -76,7 +84,7 @@ Call `stop_attack_loop`, wait for its result, then restart. Reports preserve com
 
 ## Reports disappear after restart
 
-The default `get_attack_report` view covers the current process. Use `{"action":"list"}` to find runs saved in SQLite across restarts, then select a `run_id` or `session_id`. Check that the restarted process uses the same report directory and inspect any persistence warnings. See [saved report setup and recovery](reports.md).
+The default `get_attack_report` view and `{"action":"list"}` cover the current session. Select a known `run_id` or pass an explicit `session_id` to retrieve earlier evidence; use `anticells_red_mcp-reports list` to discover runs across sessions. Check that the restarted process uses the same report directory and inspect any persistence warnings. See [saved report setup and recovery](reports.md).
 
 ## A tool scenario was skipped
 

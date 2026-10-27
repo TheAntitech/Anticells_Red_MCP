@@ -20,9 +20,9 @@ dependencies = [
 dev = ["pytest>=8,<10"]
 
 [project.urls]
-Repository = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0"
-Documentation = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/blob/main/README.md"
-Issues = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/issues"
+Repository = "https://github.com/TheAntitech/Anticells_Red_MCP"
+Documentation = "https://github.com/TheAntitech/Anticells_Red_MCP/blob/main/README.md"
+Issues = "https://github.com/TheAntitech/Anticells_Red_MCP/issues"
 
 [project.scripts]
 anticells_red_mcp = "anticells_red_mcp.mcp_server.server:main"
