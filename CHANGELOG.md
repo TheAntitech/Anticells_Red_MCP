@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased - Contributor guide
+
+- Add public contribution guidance covering development setup, the six-job compatibility matrix, pull-request review, catalog/template rules, documentation updates, and private security reporting. Link the guide from the README.
+
 ## Unreleased - Windows SQLite path compatibility
 
 - Convert Windows extended drive paths (`\\?\C:\...`) to standard file URIs before opening SQLite. This fixes catalog initialization when concurrent path resolution retains the extended prefix and SQLite rejects the URI authority.

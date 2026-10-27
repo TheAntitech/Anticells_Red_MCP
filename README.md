@@ -10,7 +10,7 @@
 </p>
 
 <p align="center"><strong>by Wael Rdifi for Antitech</strong></p>
-<p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#ethical-considerations">Ethics</a> · <a href="#documentation">Documentation</a></p>
+<p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#ethical-considerations">Ethics</a> · <a href="#documentation">Documentation</a> · <a href="#contributing">Contributing</a></p>
 
 ---
 
@@ -157,6 +157,10 @@ Anticells Red MCP is intended for authorized security research, education, and d
 | [Architecture](docs/architecture.md) | Components and execution flow |
 | [Troubleshooting](docs/troubleshooting.md) | Startup, transport, and configuration errors |
 | [Security review](docs/security-review.md) | Findings, fixes, verification, and operating boundaries |
+
+## Contributing
+
+Contributions are welcome from anyone. See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, pull-request expectations, and catalog contribution rules. Security reports must follow [SECURITY.md](SECURITY.md#report-a-vulnerability) rather than public issues.
 
 ## <img src="assets/icons/license.svg" width="20" height="20" alt=""> License
 
