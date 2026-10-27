@@ -1,0 +1,951 @@
+{
+  "requests": {
+    "fingerprint.scanner/000": [
+      "2ecca5b744035a8cc420fc4a88560750ac5ea3209942d8b595a007b83e3887ad"
+    ],
+    "fingerprint.scanner/001": [
+      "5e6edba4e01206227e5416909685feb56f522c3b6d10d20444b724923367de8b"
+    ],
+    "fingerprint.scanner/002": [
+      "16e79559a9f2227f3a723a86f659a24253b6d64f3c090f17901f8d4db66ed4a2"
+    ],
+    "fingerprint.scanner/003": [
+      "46d6c1a6cce1eef6380834eb7b73b7cf42c105ea9d651598141a4c5c604ba707"
+    ],
+    "fingerprint.scanner/004": [
+      "2e097febc0f2f04bde4d1c5071815881ee47e56e52c7fcc9884e790918ddfa03"
+    ],
+    "fingerprint.scanner/005": [
+      "cec923cc70c242f72fe099d4b5c6ac5a03415f4a631eda38151979c5f7db0a05"
+    ],
+    "fingerprint.scanner/006": [
+      "c1509df586b978c4bbdb1d50c219d6e72a4fe14e1fd15ed3edad9e580172e213"
+    ],
+    "fingerprint.scanner/007": [
+      "bc83596c7efe40bf68fb37b422b00ecdb9218fe90696e56db8dc939fb820ace6"
+    ],
+    "fingerprint.scanner/008": [
+      "79a536fb1cb7cdac67cfa1ca4f395663a1469f3f16e18a565b0804796dc0c738"
+    ],
+    "fingerprint.scanner/009": [
+      "e3dd09d2869ecfbe448fde91d33df408b9817126e795032b2758f7dc2fe7b4c3"
+    ],
+    "fingerprint.scanner/010": [
+      "f56f9969d5931996a3cc7af6ceaf029a39cd5aa49e2cb698e74179fdf11d9f7c"
+    ],
+    "fingerprint.scanner/011": [
+      "67ae6e6459f0e20e4efd332bfb9fd570f9997976fa62ff41562e6d880ee37da5"
+    ],
+    "fingerprint.scanner/012": [
+      "03aa109895d55979c8ceb25e295d6506717cb9d85c36508ba90f47605324b9f6"
+    ],
+    "fingerprint.scanner/013": [
+      "5e531acddc4d44556d288ddccd1e4f8fcd5f298e26eb38dd4d413a01d8b93381"
+    ],
+    "fingerprint.scanner/014": [
+      "75e2d1f1a4675bda73e85543abf356571803ec5aaa8885849532afd7b83c2781"
+    ],
+    "fingerprint.scanner/015": [
+      "62d96424ac40ccfca0965824016a501f7776bb55ff1b33b2d1b1387ec99816ac"
+    ],
+    "fingerprint.scanner/016": [
+      "9854228a9ec2c470cc8354111ad7502b786b5e27e548bb2b7c9da49f84cc2663"
+    ],
+    "fingerprint.scanner/017": [
+      "bfe50013cabf5c3237e0389c09e2a5e858a66bcda2b00c13f4c41c81555a702d"
+    ],
+    "fingerprint.scanner/018": [
+      "c5b209fcdd169536083c72e1efa9c535ec7bb1b2f535d76e6bb5ecea59dd7d48"
+    ],
+    "fingerprint.scanner/019": [
+      "2b3d626da59a575a7ca58206d7d4c13a60a213434afc158aa51d8cc8d94fd692"
+    ],
+    "fingerprint.scanner/020": [
+      "bbd35db24a0d1e58d55143518b46e8057b82573681e4f40cac3b72dfbb57d637"
+    ],
+    "fingerprint.scanner/021": [
+      "a8c684b64dfa9debb1674a6403b9f2f0beb047085c06af7279e51060b8771c7a"
+    ],
+    "fingerprint.scanner/022": [
+      "2116ce1292460c81bc74d1918376e5f91d66b3c550a18fa77ceeedac72abd695"
+    ],
+    "fingerprint.scanner/023": [
+      "1d9af4f07574dd18e74fce76ace59f60c7970e045086b7d73addc9fed4ecf10a"
+    ],
+    "fingerprint.scanner/024": [
+      "96d293629bf3f3c8a144df544f9ee3a41b5b6a52cc36cdb3d0a0a336ef6e9605"
+    ],
+    "fingerprint.scanner/025": [
+      "8f022b15083f21df583e623b1ddf0395b81bd1052811059e60e10a6ff96621bc"
+    ],
+    "fingerprint.scanner/026": [
+      "3d6542ac27b1dc67c7fa132935d4bfff4df998e4bbebea5ce2ed5cb1b5af2db4"
+    ],
+    "fingerprint.scanner/027": [
+      "135f2f17191422b8f07429c7a5de150ddca2eba66e9a6446b54f5e2a7beb50dd"
+    ],
+    "fingerprint.scanner/028": [
+      "7e21b33d47dba0a40b9079a66d38f826580fd19b5294682a2b9d0cffbdfab527"
+    ],
+    "fingerprint.scanner/029": [
+      "facd0e03103a44d4de6a06de473cf0c22c82df1339c995a2172254238abc4fa7"
+    ],
+    "injection.context_hijack/000": [
+      "8ffdc7d62d877ed7a0b6cde412256dad3919548a83b1b9e4ebbfa4c1b99b8870"
+    ],
+    "injection.context_hijack/001": [
+      "14e02210a5c3f397ee5f5b3e1dae79ffaf9cc7b3b91f1cb27d170210d971e6a9"
+    ],
+    "injection.context_hijack/002": [
+      "83b9da94a84417de7ba9777a0c2a4fd1e56346e0353b590c69413c6178e3a5ec"
+    ],
+    "injection.context_hijack/003": [
+      "f4d3fbf38c8370b360bfa65665e0bdd84e2eaf50d59960dc9158193964768584"
+    ],
+    "injection.context_hijack/004": [
+      "4164460e2eb4372032206a33865a5b696d87b9099814316d56358787a8ea48ec"
+    ],
+    "injection.context_hijack/005": [
+      "7b42a84e7eaf3f5b2ccf54b89e2118b1a5cee5d31132df150a2a3bb11934af16"
+    ],
+    "injection.context_hijack/006": [
+      "8170f9c8bd4ea669bc65940e72d6013dc1dea0bac5fbc32126debd1e6acdaec5"
+    ],
+    "injection.direct/000": [
+      "09cb1b778f3f84c74180b1d6a362ea9ed8516dd0de3de93332e955e9294b19cb"
+    ],
+    "injection.direct/001": [
+      "b6dd960123e6b7d5d294b08584ad04782e3d76a7fd74a94eb8c536fac77b35cd"
+    ],
+    "injection.direct/002": [
+      "c3803ffbbdec53a253778a50fef7f4f05c80ca01edb2cb1a6e6e25aa4e27885f"
+    ],
+    "injection.direct/003": [
+      "94b2d37cef5229baa0c640ced11644fa0d8e30ff195e5bc06f810fd1b2ba62fe"
+    ],
+    "injection.direct/004": [
+      "851c949a442bc18c144c44f2888e894740d5f51197166b157d16ba572cffc553"
+    ],
+    "injection.direct/005": [
+      "53c8d8d1a0fb2909323d142a3b6dc3353a48d982ab4d6a67d2d4d3b082f6a0ea"
+    ],
+    "injection.direct/006": [
+      "16556fe05a3b97b82fd4b5ce7f1ebf5b096a8e396be163cb92f27bfe4e8372bb"
+    ],
+    "injection.direct/007": [
+      "2be0e75dc0463c306c9d0683779ec040d5c5cc5a63f6599f0e2ac0db1d726de1"
+    ],
+    "injection.direct/008": [
+      "f0fd19503d41e8f2a2d7c430f85f2324e8ebaeb2f3e27eac04b1d38a77352444"
+    ],
+    "injection.direct/009": [
+      "89e46af9dd3c616e0a341f80357e431e88adc12547887027449d9b41372340ef"
+    ],
+    "injection.direct/010": [
+      "d080c412d0baca366f7345990f46d85579897d724a374a2308a15d427ebbdcdf"
+    ],
+    "injection.direct/011": [
+      "251de00b7b37504a39610935396f446707cce68a758a7c08653602db5d72cc37"
+    ],
+    "injection.direct/012": [
+      "30f2b556b920ea4e96e53dff8f9e91c7e1178a388ead6e04db0526e18c5767d9"
+    ],
+    "injection.direct/013": [
+      "eb1f62fb37f97152b32e8edf4ab200c1bd8120cfcaa097fdfac006813980cd11"
+    ],
+    "injection.direct/014": [
+      "73599c944dd5f0a5156afb5e1f25ced6ee7abb6d8b71dfc2cae07425807b12f6"
+    ],
+    "injection.direct/015": [
+      "cfc7b76b3c627d7113c961ecd9d1468b171cc884b4671797751146b993c493e1"
+    ],
+    "injection.direct/016": [
+      "e2b10bd9c7609e1aeeaf953b0fb2114ea94b7eae12cc6d2234de0a4897dff40a"
+    ],
+    "injection.direct/017": [
+      "5429205ced3f1ed40228f0252743db9221fb30ce6ff28117500c30dd90e1f399"
+    ],
+    "injection.direct/018": [
+      "27d0d5b0ff101408f0215f99f76ce807d34d7f735391d3a07434381cbc0f3869"
+    ],
+    "injection.direct/019": [
+      "623941db65119c5d2cd8a54f203795f010d770098db21f7bea6a98eac817770f"
+    ],
+    "injection.direct/020": [
+      "1f3619c5742a1178c2ca61751cd0e7f0d9448c279f2d452fcad2c3469283e12f"
+    ],
+    "injection.direct/021": [
+      "001e6c666abf7bb2489d75973fc8d97431b52b6e364855ea2009d4bc0344c983"
+    ],
+    "injection.direct/022": [
+      "3baf4f605b959d19a54aeeb3be0e692c1cb6f6d8c39e976123970f879d5cdd14"
+    ],
+    "injection.direct/023": [
+      "ba847637c4bbc757704c1e39007cb37b1150c26183a5253ce73b195d9d6ef1f6"
+    ],
+    "injection.direct/024": [
+      "5501d4bcfe9acb401edf253d46129a8d817cfbd4abb89d36e00dfa73c942a372"
+    ],
+    "injection.direct/025": [
+      "e4cc5d92a2ed7a0850753bb2c0f02831425946257a7e5006ae2117731e5c2aa5"
+    ],
+    "injection.direct/026": [
+      "4e4f177535821fd639998db757dc04b6bf6f1e07735f696514788c3f12436fa7"
+    ],
+    "injection.direct/027": [
+      "3ef9b5be2a69714389c97cfaba9dda731ed0f95e34b43d719f0d945271f929db"
+    ],
+    "injection.direct/028": [
+      "8899e2f1ce09ea8ac388c3e1793829bcd5024ebc44769615e40aae45b89e2417"
+    ],
+    "injection.direct/029": [
+      "8dc3d78e5ae0890525d2916aaf1644b8079a2226d709265a9370574015f20b79"
+    ],
+    "injection.direct/030": [
+      "13722a25d6bb9c70fbf45cb0abf291d9dad8abb135bf5b5524b11bba79560ee9"
+    ],
+    "injection.direct/031": [
+      "14f42830f128ab12783a493d1a739efaa682dab571d696b8a7fdf63964c0f72f"
+    ],
+    "injection.direct/032": [
+      "9512c3ba4a69129284c31480281faaa91be44e54f2360e12d26cec53ed08cfb4"
+    ],
+    "injection.direct/033": [
+      "fb2ea5348c9549ab4a19f60a38b8fb941ba05e1f9d5f60d1b1c1c71f721203eb"
+    ],
+    "injection.direct/034": [
+      "49097beebdf6b27680bde6f17800fd65c0595f7028989ea62b581a8c749de2a3"
+    ],
+    "injection.direct/035": [
+      "f3574c7292a2e429db5da1c6608457ffa14f6977922c15672262b04dc341cb80"
+    ],
+    "injection.direct/036": [
+      "e6f552be3acd5dd0dcba3d68bbda58d4a44c2ba67ccae1d13ab019fd03cb65d1"
+    ],
+    "injection.direct/037": [
+      "1ee7b57d59cd253d326c9a7c4591e03be3103eb03a1d7245217ac4455d7a1977"
+    ],
+    "injection.direct/038": [
+      "501c5eead3af994e78dd36bf4f5f4c52e464ea0f9de4a7525587ae1292ee595b"
+    ],
+    "injection.direct/039": [
+      "e84b186bee304f72aa4f1759700872d686d5a7b3288dd00cb2e990d63a2b677f"
+    ],
+    "injection.direct/040": [
+      "61d011d787848da57cc071884285dc154b113d4d68c5f6b4c23d91788c91ba5a"
+    ],
+    "injection.direct/041": [
+      "f68f8280fd1a23eabf9bf62d64d9034a58574e999a3cc30304dcefdb889698de"
+    ],
+    "injection.direct/042": [
+      "401aec3dc1241e1ed8ad741d28c73e33dd4c9b59f7caa389bbff54a6a4ea75c5"
+    ],
+    "injection.direct/043": [
+      "ebc96873a89e9a951cd326467e0f39ef10ee94deffe647cbbed2d6cc6c185815"
+    ],
+    "injection.direct/044": [
+      "1aceb808bc6794b59129f4634b8f64db240a3fca842e3090ebb06b4f3e9b0d32"
+    ],
+    "injection.direct/045": [
+      "623572863ba18734b8810b10c52dba83415b2803f591e2521a001aeefc00001c"
+    ],
+    "injection.direct/046": [
+      "032b1b32d379b9d477af2defa96e784fefaefbfa4f338d9e1f8ec78b3e07da6a"
+    ],
+    "injection.direct/047": [
+      "eab2ec1f0a52c74544c1093de8ea83fdbbedba411ca1cb76b6c5ced18eec01f1"
+    ],
+    "injection.direct/048": [
+      "04e44e22a9afb470c266bf4ca5b909ee4e3a3e9ad50b7af2e7c0b0edaa969d6d"
+    ],
+    "injection.direct/049": [
+      "022d945b2417464d307ac8d22274750dff59240893d7a2cbcb1576c5d71cbd98"
+    ],
+    "injection.direct/050": [
+      "24d2a05f5eb74d3d95cc948d0095d35b8fcc8adb754e7eab452994603ae2091f"
+    ],
+    "injection.direct/051": [
+      "61824a1729c89360fddb77fb41074c82020f98f95529be5ed48ddc07dfcdf3d0"
+    ],
+    "injection.direct/052": [
+      "10a07ef3474e227597c9e74da19f439b1d592a8fdea834b890bb80a3c70b6451"
+    ],
+    "injection.indirect/000": [
+      "43d780c3a36eeae5dcfbd125eb3ff8aa642bed2009cc2df583b7f6b2c9dd142d"
+    ],
+    "injection.indirect/001": [
+      "994a85fd59a5465dff8df87b5f648fe26f39ea32fa8442f18baf10652d60d6b2"
+    ],
+    "injection.indirect/002": [
+      "b3fb4c70897c7538b1101e23ffc83c59d645cad7161645faf56c7dfbd10dc453"
+    ],
+    "injection.indirect/003": [
+      "d4ba2640f91800d16a6b2290f3a4b21a9858bb959edfff56e038526b679107d0"
+    ],
+    "injection.indirect/004": [
+      "f022197bacc7a3295ecd574919680580526dc3e5b75334fb0d08cca728161a67"
+    ],
+    "injection.indirect/005": [
+      "1e6fdb9a1828c5b49f8a64a8aa835e250a4da409b1e6f60626d340168387217d"
+    ],
+    "injection.indirect/006": [
+      "b9729b0ab25832276b7a1024357162e43fa9603f2181f26248f1a56902a0d595"
+    ],
+    "injection.indirect/007": [
+      "12206580dedfd16e4b13065fba1de42b1f3b9d1eb564997cdb9af981475cfb67"
+    ],
+    "injection.indirect/008": [
+      "0d08dd001f3e75b89d3bed1af0430863c3f80521f2a30d718c4fa8477ebd135c"
+    ],
+    "injection.indirect/009": [
+      "a82decb1b9580b72c84194e5d20379fd34a30ec5186e6b4f77465abd057e284d"
+    ],
+    "injection.multi_stage/000": [
+      "4e24fc5d775b3da04aec8f83bab3897ff10488ce91da03ab880685a303cdb30c"
+    ],
+    "injection.multi_stage/001": [
+      "c7bfe19aa7d7f50bfed97ca2c9c9f2a504ff36e1d84bcdf48864b92a2b77d11a"
+    ],
+    "injection.multi_stage/002": [
+      "d45d7f42400912fc15158b81447a0fe7f3030d7981290dfa56ce682575069f0f"
+    ],
+    "injection.multi_stage/003": [
+      "3c6cc7a4969e3ca54855ec401002f1aaeec4e5b94f5c54504c34f8fb850c82a1"
+    ],
+    "injection.multi_stage/004": [
+      "3550be2dc18b4f02e3314ede5cd636ae83c6bfdddd64e328c1ebd345849e76ed"
+    ],
+    "injection.multi_stage/005": [
+      "9001839abeee22c4bb641add4db4c56945f985898f5c3c71f0f8a02fa08181df"
+    ],
+    "injection.multi_stage/006": [
+      "79ce8fb0f577d96d1df009c180035488158b6367ddc8572c6851ecfe851727e5"
+    ],
+    "injection.persistence/000": [
+      "b68e70ee08c5af8a0f65d64c32ae6d3fd20511800637bb343006d968d7725f53"
+    ],
+    "injection.persistence/001": [
+      "6f12477c5e05406458e0fd138b676afced43a2e7ca3b601203089cd9cdd53511"
+    ],
+    "injection.persistence/002": [
+      "d22acbb49c7413c8484ae68524a7f776a46e158ee5b76c5a7d9e8d5ad8160055"
+    ],
+    "injection.persistence/003": [
+      "9a7e97f41271d09fafd1b7d2edd80c4ade2a97c95aa745263b6de4c6ce46309a"
+    ],
+    "injection.persistence/004": [
+      "95a06fd08c3d22aef2b283310e614a6a9d14491862d24bf3bc493595a30c5c1e"
+    ],
+    "injection.persistence/005": [
+      "f765a32a069d162c6ce073f1aa5dee8d3b1896c4db2f3a26d52b631942cb1df7"
+    ],
+    "injection.tool_poisoning/000": [
+      "660a8a021a277ab7dcb36dcc865cfe97541f01623f883595f341e37855f8c62e"
+    ],
+    "injection.tool_poisoning/001": [
+      "089bd03808a50a2ab828e754ee620ea41628df64864ca04afc34ab7d914cd59a"
+    ],
+    "injection.tool_poisoning/002": [
+      "ab7d9170188bc4b9f966f4028e79a6e19c168ac3cec969deb55c590b0296951a"
+    ],
+    "injection.tool_poisoning/003": [
+      "c44fa7ff7bb9e00dc1c8acc7b0f0afee5b257abeccebe7c662c663e0d808307e"
+    ],
+    "injection.tool_poisoning/004": [
+      "d63b3f0770b035b9efe32b488b0b99a4ca41d93606932e4ba2e2153390c04e74"
+    ],
+    "injection.tool_poisoning/005": [
+      "52f327bea98b7bc245fbc436f0172e6b3632c7860d55b3dfce1dc6c22a5921e5"
+    ],
+    "injection.tool_poisoning/006": [
+      "f52727a936be013810b9d09ff7c059220f6e10c29a691bebfae71ba7c572fd37"
+    ],
+    "injection.tool_poisoning/007": [
+      "b4c1206c4fc00be3839e512ff8f298e1de5ecf9244bb89f70c9313bc500d1efb"
+    ],
+    "jailbreaks.advanced/000": [
+      "6f7ab9085cc1a0bea3f0b5ea7e8a3c2c6c92071323dbd417761e1add07d6a721"
+    ],
+    "jailbreaks.advanced/001": [
+      "91e648ec726543bae550266b91947b9ac95100b5f189c6a99afe94b9ced3de88"
+    ],
+    "jailbreaks.advanced/002": [
+      "c6efa339300d89b378d3b43f1c081d8add859c9653222be7dc8d7ad8bb580bf1"
+    ],
+    "jailbreaks.advanced/003": [
+      "cb4c2d9e3efdb639481df45e3c2c0c2a880e2441aef206a58bf8d2326c98e6ec"
+    ],
+    "jailbreaks.advanced/004": [
+      "de878b818ff2c9045bd979bae14cbfc6b67bb5ccc3351730a10d68b35f165f93"
+    ],
+    "jailbreaks.advanced/005": [
+      "10a29b970df3b701cbcb56d4bf960486f33dd7dc5cbceacb191ba66cb3be48a4"
+    ],
+    "jailbreaks.advanced/006": [
+      "b1a33e067c7952e988f45b716aa161b152e36a2ef88523d1e28712fb3bd902db"
+    ],
+    "jailbreaks.advanced/007": [
+      "2e26c560daf1e9c0bec328fe0f7dcaf38a4181d9b0ce0ed30368a147e0c3de45"
+    ],
+    "jailbreaks.advanced/008": [
+      "a3b472b18d5440b93f90471daa28c214d90af9c87abb26a7a14ef9b1654d7f06"
+    ],
+    "jailbreaks.advanced/009": [
+      "711d8f69294daf036cd955ad9072defedea6137be5c025d8fa4b31531e917f72"
+    ],
+    "jailbreaks.advanced/010": [
+      "d6491c6a0e1d54ae443c231b97c86f79d320c78dcc34b11979e525417d023000"
+    ],
+    "jailbreaks.advanced/011": [
+      "4f0d4706338f1f7036ab3bdde876b5e3bbea64799fe87faa0a1d1d13edc1e01a"
+    ],
+    "jailbreaks.advanced/012": [
+      "ec046a89d1a93c1aaa9ffd1daa8e921c969b3d19ff2129d38b8c4ff5f2e0031e"
+    ],
+    "jailbreaks.advanced/013": [
+      "b99ca48971ea03ec0d4404a8a7b34adea68e6db9d447789081b220084815c9c0"
+    ],
+    "jailbreaks.advanced/014": [
+      "9009531c3783c0cff5ec533578d7f0d6c6367a320743027a0513bdbf8b36b1ea"
+    ],
+    "jailbreaks.contextual/000": [
+      "90e80649d63cd22e83b7c2934d92b0f2e4b4895e58bf20bcf014573b8e7c5dcf"
+    ],
+    "jailbreaks.contextual/001": [
+      "c5cbb82421648cdca4b560801470a86674bd600384a47cfabfb9479442df3dc3"
+    ],
+    "jailbreaks.contextual/002": [
+      "60655baa8b78b95e587118b05f6de31fd107301803be409458ba3282303b59af"
+    ],
+    "jailbreaks.contextual/003": [
+      "2856cb015d1796efe3c6e91b737d08c2df82ba5d31a2739c48cef87c9fe6982b"
+    ],
+    "jailbreaks.contextual/004": [
+      "faf4af16bd61e09ed82f7b45c53838bdffcb0f94a61757948f037c874203a054"
+    ],
+    "jailbreaks.contextual/005": [
+      "cb0530390c30cfdf24d62dee89113ade85b5999660514ab0a3ca6e2c702ec7c4"
+    ],
+    "jailbreaks.contextual/006": [
+      "40eb5eec8a3e790696542f7fdeaead50a9aef67dd818555c7b418eaa35244e04"
+    ],
+    "jailbreaks.contextual/007": [
+      "04916e09f00883a0fa49ebd6399fe662845e8fbe3719170a9a5dd54f97aa94a9"
+    ],
+    "jailbreaks.contextual/008": [
+      "ad630cc20b64bb05f44478943c1d3cc9db2355c92788004412655793a1c0ea0d"
+    ],
+    "jailbreaks.contextual/009": [
+      "514fbbb86d3e43973dc7fb68f201e8bb38eddf100612d834b637adf56d748a0d"
+    ],
+    "jailbreaks.engine/000": [
+      "60a8e831a8d4230f92ece977114e9cdca97e625f4d2331df955a4be0af4b8f04"
+    ],
+    "jailbreaks.engine/001": [
+      "92ae2d59dfdfee2e848004d36f8cf70016d162490e405fd79252b595f97e2c62"
+    ],
+    "jailbreaks.engine/002": [
+      "f14a706c94c3c9f3dc6b450d25c9a604c0fa486790b0e4373ff8024701abccbc"
+    ],
+    "jailbreaks.engine/003": [
+      "4085ccfb6d024f139dc9d877b1f0ea2b79d56615bad8399f85d14ddf7e2d230d"
+    ],
+    "jailbreaks.engine/004": [
+      "bbefb5890554d1295a2ecb7f5edd95d6aa31480abb2800dad9f68d54940a6839"
+    ],
+    "jailbreaks.engine/005": [
+      "d156b25fd03e97455e04b7207ecd2ebc0777e9aad43bda5e7cec90c108000456"
+    ],
+    "jailbreaks.engine/006": [
+      "45c8f0edcc891995bf2ce08ded987ebd72507dfe94e972f8d3800e80dc4ba999"
+    ],
+    "jailbreaks.engine/007": [
+      "9cec0f9f2be6fcc2fd58318c490d3b3aef5efff646194c3497e94e18d455efc9"
+    ],
+    "jailbreaks.engine/008": [
+      "83658b2d6ee70a1645ae05e03cd0ad2f51eba43e93d308a18897468b508d0ab7"
+    ],
+    "jailbreaks.engine/009": [
+      "9757924efbb3dbd275f3db71ed46bff9a11a2e7cdf2461504a47b82288262f6f"
+    ],
+    "jailbreaks.engine/010": [
+      "42abadd04a0121d7bbbfb60c11f0227dbfde1bd897d236748e471edd68a27aff"
+    ],
+    "jailbreaks.engine/011": [
+      "87a50c62a0314fab52bbf574348fce698494b08e4bbe7c32c569537883051f68"
+    ],
+    "jailbreaks.engine/012": [
+      "2ba92c346910defa8b4c38af717b9ab3df4c50746e5f7e9fdb1ff5bd59dcb551"
+    ],
+    "jailbreaks.engine/013": [
+      "2ce255f0930ed1701fbc161b3175c1604fe06d3af46eba1ca6b042a2dd0f356d"
+    ],
+    "jailbreaks.engine/014": [
+      "c8ef4d4ac238049105929383f70c0171e2c4c286a009c0b19490647901f81ce5"
+    ],
+    "jailbreaks.engine/015": [
+      "0053644b8ac22954654e8841bed5721e5851399d0c3b10f3adbff681ecef18f3"
+    ],
+    "jailbreaks.engine/016": [
+      "eae65019520cd9bf505d53d93f81171cc8aab7536682b43867dbd494711270de"
+    ],
+    "jailbreaks.engine/017": [
+      "cf80aaeaf8d53772a51688a1522c9c464c8ddd9b02662aee7d455ce5bd0f49f7"
+    ],
+    "jailbreaks.engine/018": [
+      "6c94a530ad273d1a1a40dce6415fdad2f949d483b8edcb2f40549b774e17d272"
+    ],
+    "jailbreaks.engine/019": [
+      "369f470328aa66925da8dc5bf1c3068fc455eff836cb2f3322d7538aba5d100d"
+    ],
+    "jailbreaks.engine/020": [
+      "28c8c3567ee61cd1c57b56ff45dbef90c568147a04dbad50c3750d8a066d7ca7"
+    ],
+    "jailbreaks.engine/021": [
+      "a5278bc04c2bf3174f7bc0ab95254bd61127edd3fd366bc7c0fd58fb289b79f1"
+    ],
+    "jailbreaks.engine/022": [
+      "f9e67715a807b87f29ddd8a55f9830f804c897a46887f39fe63193cb30ba5116"
+    ],
+    "jailbreaks.engine/023": [
+      "eec12413055386a0b04f6ea79e0bed9373743ac3149f8d31ce11d088452bd77c"
+    ],
+    "jailbreaks.engine/024": [
+      "e17af772c46b43a97dfe8924549243b2a68e6552f62fb9447c022348f510a2ea"
+    ],
+    "jailbreaks.engine/025": [
+      "0157fb5eba276e8ba78ee0e0d30025698ce485e772a9cb9d5b1d1467eda67817"
+    ],
+    "jailbreaks.engine/026": [
+      "c0e184665db7b845a6eecbdb2516eb7a7ebd16fd35971dbcbf58e91f94784379"
+    ],
+    "jailbreaks.engine/027": [
+      "db739430465b53805ffe8b5f58921a60757db8fc986dae3774cdaec9df5aef5c"
+    ],
+    "jailbreaks.engine/028": [
+      "242b27081ede251b24f46ab1720f4b3741ecdeea400e07fe0743079bdba64d73"
+    ],
+    "jailbreaks.engine/029": [
+      "b94c25d636175fdb84aae13daa97efb2aba2ca697d3b72065ce66772e16dfb99"
+    ],
+    "jailbreaks.engine/030": [
+      "a597ce9b84bb13a9d325900a36703aedd9e86b56e95a2452610b41d73ad7f95e"
+    ],
+    "jailbreaks.engine/031": [
+      "0e827f4847866e752ee7aae1159d394c59d6c4bad0307368e1b0fe9e49a32554"
+    ],
+    "jailbreaks.engine/032": [
+      "3c2a43415554eec58603effc0958ff37aa5f4a648a88d9ff633609e6364c1d72"
+    ],
+    "jailbreaks.engine/033": [
+      "74d8958d14b0643c24330f8f0cb68809dad8c5204168893572e5359fff68b927"
+    ],
+    "jailbreaks.engine/034": [
+      "5331eaa7a85d23d5d1b0d051feab34d76709783c08b9ee26da02153fdc0469f3"
+    ],
+    "jailbreaks.engine/035": [
+      "e49af534d8033bc6eba6bde3e2205a8869dbbadcf46e43e4e0553e0083b1f02c"
+    ],
+    "jailbreaks.engine/036": [
+      "fd1a7451b4b5b76d03cf5970b047e27c888998d3ed2e052fadafdebb0e2ff892"
+    ],
+    "jailbreaks.engine/037": [
+      "95c7a54d099fe1c9b763e423ff10c3fe3c1037d55153ab3f4cb09ce2a28fd62c"
+    ],
+    "jailbreaks.engine/038": [
+      "78737efd5c461e79e3dc9aa8a648b9d14992d8ba9be57e27235d1bc9c29fe39e"
+    ],
+    "jailbreaks.engine/039": [
+      "599ec247f5d0b192fc627a93a63971d6e743ea478b6d995014a661ab42be3638"
+    ],
+    "jailbreaks.engine/040": [
+      "ef4fb8ccda481456db60fb9d4707adb2c528745b9d10f4473b091f52182c84e3"
+    ],
+    "jailbreaks.engine/041": [
+      "b62f16cfd74a77cf38f1fb5edbdccb99b841a5d4475e86666bd2d1e690df93d5"
+    ],
+    "jailbreaks.engine/042": [
+      "09c5af0c6927caa4cbf57a9106aad3ad0cee97558e74ec33145ce37a6b7ed92b"
+    ],
+    "jailbreaks.engine/043": [
+      "aa767ed667a7711f260135becb1c4bfa62137e240a18152fc9e2a74b8a8258d4"
+    ],
+    "jailbreaks.engine/044": [
+      "b0536106b8c82e0e2252ca95d1d8218c100eb1c1bcb966d20c8d51409464ac4f"
+    ],
+    "jailbreaks.engine/045": [
+      "adcd8dee5046f5569c5e13ce8d47e5ed99b137de5d89e1d24e5c93b5fdc12221"
+    ],
+    "jailbreaks.engine/046": [
+      "f5be7f308a1dc4abeeff45805ddd823d57da474cda65e756a5716e8d563c0751"
+    ],
+    "jailbreaks.engine/047": [
+      "b2aa8cb667ba15a3f5b5b0397aa7dd1bc27ce110003020a1d90ba816aa986083"
+    ],
+    "jailbreaks.engine/048": [
+      "eb2b7452c3b13b5535c6a80dbff522518bf3ccc7db1818410ffcf4af17a28467"
+    ],
+    "jailbreaks.engine/049": [
+      "b68e222da88b697506b9922fae5eda9b0282f7745af52f9c910d8a7f4e6942f4"
+    ],
+    "jailbreaks.engine/050": [
+      "1e5d50de419c43dc655d1095c29ce6c6b67b029bca4d72e34514e175771c7226"
+    ],
+    "jailbreaks.engine/051": [
+      "1a2195cd9bcd243ec45fc8d365723741932ffb763a51b8e1b999edc75444fd45"
+    ],
+    "jailbreaks.engine/052": [
+      "46e9b3550ab9b90c43eccb19a1ff63422ec652a5c056b4cb6624827c086d5c28"
+    ],
+    "jailbreaks.meta_break/000": [
+      "f2f06346b95828dde09ab4ca629eba5f06136a21bfc518591384f134246ae9c6"
+    ],
+    "jailbreaks.meta_break/001": [
+      "1fd45390e3a5ec24ba2ca7a1110cab29482ab39e2d84a5ed94d16a8e14ec60b0"
+    ],
+    "jailbreaks.meta_break/002": [
+      "691b47f7f0cdfeeb3d2b062e1801db0675bc01ae2784e57519bffa5b36ba46bf"
+    ],
+    "jailbreaks.meta_break/003": [
+      "d9b64891826504bc669228797801c11ba2de7a6c1777fcd3410bd5bb25e4afdf"
+    ],
+    "jailbreaks.meta_break/004": [
+      "881d6e5c5d8c289733c8c1fb840f837bb90ca43d3527c211792815b1cdff5522"
+    ],
+    "jailbreaks.meta_break/005": [
+      "31f2d126bb0e54cb8903670a4ca26431e783c36607f965816ef548b5a9ba02d8"
+    ],
+    "jailbreaks.meta_break/006": [
+      "2ce6ab3ef029dfcd5f81aad34a8dca9523d7d52e8cd3ad296ffce20af5e9cddb"
+    ],
+    "jailbreaks.meta_break/007": [
+      "ba4f055450d1833aed67af81d3529a06129e9da122eb369ddd9aa6446b839b4d"
+    ],
+    "jailbreaks.meta_break/008": [
+      "53bd2ea3e988f75ee21f29b01f0e322f1a195f5290cbf0223d92c6093773f719"
+    ],
+    "jailbreaks.meta_break/009": [
+      "528ad3b12cc5ae2973d52b533ffb51ef186cf7c095a530ee58e5e92c672c4acc"
+    ],
+    "jailbreaks.multimodal/000": [
+      "8685ca691c8714ae5e32c0ef2ff7419a40fe9a5148a39882aec73027576497d4"
+    ],
+    "jailbreaks.multimodal/001": [
+      "a2d46d4ee34f90f8c3fe6bd0fc44abe64b13dc5e60169ce77e21cbc802860e2c"
+    ],
+    "jailbreaks.multimodal/002": [
+      "dc62a8dee55487593f847385aada194a772ae8d4973526b704df386326607d2c"
+    ],
+    "jailbreaks.multimodal/003": [
+      "568b5d2b1cacd2e7b8dd9772055750854428147f1ac8b53a58b4c43e848fa0d1"
+    ],
+    "jailbreaks.multimodal/004": [
+      "61724034a36ac5051c933330d5d0ae634f00df9c64743e0f1abb9b8e86812cd4"
+    ],
+    "jailbreaks.multimodal/005": [
+      "d637d0f8d8a83ee2387e6b3502d93e98d69e91d31b65c777324b46f6e81b7281"
+    ],
+    "jailbreaks.multimodal/006": [
+      "4063eafccbe33c7a93664b95b18888d935bdb3616ce9c6d873d7f8cd7d56bcb4"
+    ],
+    "jailbreaks.multimodal/007": [
+      "f1fd74d120e2628b18841d8345e0ba844e7f52553f6d36a8b8039549594706de"
+    ],
+    "jailbreaks.multimodal/008": [
+      "983cd3ec6cce5957132f11ac4d0021840dd9c4e010c5febfb771379de486a2be"
+    ],
+    "jailbreaks.multimodal/009": [
+      "11b2122739eb3fa8bfc520edfa29e0a9380f6e4df581a370046be251388ea611"
+    ],
+    "jailbreaks.multimodal/010": [
+      "598a5988b8b0fd4de1b2b0d94209fd2cc8dcc227a4cc52e71986ad973c63f4cc"
+    ],
+    "jailbreaks.psychological/000": [
+      "73a7db1daff66559115219495034b0af091ff74ff6d937ec394310b4e4ab976e"
+    ],
+    "jailbreaks.psychological/001": [
+      "9494f5bba2755620fab34c64f05af337a0539a98558387cf226c0e7d09afb048"
+    ],
+    "jailbreaks.psychological/002": [
+      "ed8ba18871153f5b27ce661a155a7a6737b1e82e70cfb089fca36a551bafb1cb"
+    ],
+    "jailbreaks.psychological/003": [
+      "58dfbcd7ced8f552893ed6ad3ea78566b7fd9dd8d4ee5fd2d6ceda2f5736891a"
+    ],
+    "jailbreaks.psychological/004": [
+      "ec6622da6883acc12deeda87bcec181edb2e519a2ce181a0e19e8b60873dca3b"
+    ],
+    "jailbreaks.psychological/005": [
+      "18c014c652b14793166a6079e923c8b5a0120c45fc11adfebe0a959ded21641b"
+    ],
+    "jailbreaks.psychological/006": [
+      "ca9d5ce9a8a8e91979c29c0f95f8d3b07687a4e3cca4cee35fe5d27ffbc76f45"
+    ],
+    "jailbreaks.psychological/007": [
+      "025b1702dd491fe215955810ede67f52258b99dbd8388efbcb1756d87bad98c7"
+    ],
+    "jailbreaks.psychological/008": [
+      "8cbb66568a683ff11f41a95e788bfdfe3fb8a20ca18bf5fdd09fd4b165c2887a"
+    ],
+    "jailbreaks.psychological/009": [
+      "b6b792a6e2fbe747de5ef584555cd2ed69bf35d6a474fc8e9b0ea3d74c44dab7"
+    ],
+    "tool_abuse.chain_exploit/000": [
+      "00432930467651d2593d9a8a82f2ca201a5855413472a8fb51987e7b1492f876"
+    ],
+    "tool_abuse.chain_exploit/001": [
+      "2c619adb899fef50661049cbd9c7029fb3f063b3a5c441e5ad84165ed10348f6"
+    ],
+    "tool_abuse.chain_exploit/002": [
+      "e202c87fe13b47404ff554fb0923b4ca5865ec348b94eb15d2d29e8c4e36f2ca"
+    ],
+    "tool_abuse.chain_exploit/003": [
+      "e6a8738a081f6a2e99f83fe1b04068e6a9a8088bba7cf704b6f2f8910a9c8055"
+    ],
+    "tool_abuse.chain_exploit/004": [
+      "f73313253c9242f802e81a2b1e4f1fff2ab70b92ebd5d4daf88dc652744b8d36"
+    ],
+    "tool_abuse.chain_exploit/005": [
+      "a1ae110a9218d5934debc8f3c0fe7a48b14f54e57d63704f10c6f42849a817b2"
+    ],
+    "tool_abuse.chain_exploit/006": [
+      "38cf7387799765faf97e22b3e583436758e8031d26680a57f91109528227f4bd"
+    ],
+    "tool_abuse.chain_exploit/007": [
+      "ec8e2de0a67b0de9705fcb5190fe98d0cc2ac79a1ee67a001bdeb1b2909aa83e"
+    ],
+    "tool_abuse.exploit/000": [
+      "b359b854b67b213b8b1100ff9df67a55abcfa52e5b89ef60f97b25bd6c9ca07f"
+    ],
+    "tool_abuse.exploit/001": [
+      "293207757c1800a81587073843acd24683b81a8a2ddd79a8b25c63a973d49864"
+    ],
+    "tool_abuse.exploit/002": [
+      "7b32818b10c00a333abffae37d162a8115f0517f4e227f13632e83dcddfc16fe"
+    ],
+    "tool_abuse.exploit/003": [
+      "e24d6afe03c73a0c53f0b84d53b2831600fc2a16d81d51bdccdf25da60e069b8"
+    ],
+    "tool_abuse.exploit/004": [
+      "4586deafadeb873dc948fe4be290febf24d5593dacfe40d350fa73fed546248c"
+    ],
+    "tool_abuse.exploit/005": [
+      "120df880355a92b3f233caf602f852dd85eeea12670a0c37c683ad0393c2235e"
+    ],
+    "tool_abuse.exploit/006": [
+      "760df1ad5e8690b98547a2bfe530fc75d9e449e621271757dba092c270a6726d"
+    ],
+    "tool_abuse.exploit/007": [
+      "8b99d56e98eaad9bd0fe80f93cd3314c198864144f4f815083567ccc6c0d0585"
+    ],
+    "tool_abuse.exploit/008": [
+      "0ccf38d969d9ce8a104fb4b5543e33d359b24b636cddda4434c2f52bf660503d"
+    ],
+    "tool_abuse.exploit/009": [
+      "d2380e472d7d43981bfbd4a655063cc297fa681db702206688a3d807e7430b10"
+    ],
+    "tool_abuse.exploit/010": [
+      "30d0b9372f46aca8ff9caf0f7be889783944b7a0359ecae021512f29678e372e"
+    ],
+    "tool_abuse.exploit/011": [
+      "13b321bd5f0402ace76d8f1a7da6765cd1e4e61f33bb5f13cf0b6f903481a2b1"
+    ],
+    "tool_abuse.exploit/012": [
+      "fe20927c9ea12bbc674d253cf7fcf5d11542ccc56947806d657cc73df561cd21"
+    ],
+    "tool_abuse.exploit/013": [
+      "2fa243e99808b7026ce24ca467ea5fdb88670373472512dd18b5f6c2c00b5044"
+    ],
+    "tool_abuse.exploit/014": [
+      "6270b94e83e6ef74374a672ebf5a4871fd314534ed16a7c33e99265b69a88a1e"
+    ],
+    "tool_abuse.exploit/015": [
+      "38fd67cc5be52e8e3098273de362ad1b81e170d4b4bf0785ceae77236abb2c19"
+    ],
+    "tool_abuse.exploit/016": [
+      "d85a32f8973ea18d27a5e54f5fb97867ce43a9e416f9dde0c9a68c545feffd93"
+    ],
+    "tool_abuse.exploit/017": [
+      "8dfab477673c559ef3a02ed26ac0cc83d4b17fa502542ba284fe60d8c1192576"
+    ],
+    "tool_abuse.exploit/018": [
+      "80c55123e4ba10552fba7b99272e0403b28d40d473376ed91b804e83da8765c6"
+    ],
+    "tool_abuse.exploit/019": [
+      "e3e0415e4d2386aee5996643f607f637bb5a47cde743ceca7016cb68f63cb08b"
+    ],
+    "tool_abuse.exploit/020": [
+      "ccee98fad01f9de73d1905c113544cdf22f6a2837c7dc20ae41a71004f054ce2"
+    ],
+    "tool_abuse.exploit/021": [
+      "80c42b4491c0528d0ad4f5267a060d4c9cbf752be6700293bb35989c746fe54a"
+    ],
+    "tool_abuse.exploit/022": [
+      "6629c108dd17a63dfc2b902f8ab012561f1be89aa3a2f1203d76d93c73ef3e3a"
+    ],
+    "tool_abuse.exploit/023": [
+      "a97dcf313ed3f2fa775532673fcd6cb9dbafd42083107a238db14a2cf12a7590"
+    ],
+    "tool_abuse.exploit/024": [
+      "aca5321c5a0b56af877973659b01e144ecf11a69755e2cc1603f2d10bb97492e"
+    ],
+    "tool_abuse.exploit/025": [
+      "e112326a815249b361eda4a4d39863137fec46bf7962a5f043ec9bfb4bf462d7"
+    ],
+    "tool_abuse.exploit/026": [
+      "de3f96b1abb44327c2c8cbd03c89b4988ded3d3f0a37ef02e80e3b5e975a13c5"
+    ],
+    "tool_abuse.exploit/027": [
+      "0f1adaac00bdffb91b08f1b29a72dd06f3d24fdc8a2ffbaf30172db6df0d200d"
+    ],
+    "tool_abuse.exploit/028": [
+      "96875447461572501fdb49be6e396a0784e75ba7292957b1f5a886ac26776afc"
+    ],
+    "tool_abuse.exploit/029": [
+      "d1b51bd4893c0a0d7a828efbaf22394f0e08f0d0080183fff9c2fb7a90a42e8a"
+    ],
+    "tool_abuse.exploit/030": [
+      "b5b33e0b902c6b459e4f1d1322262d53106352d9a0b083b4c373f41a93eb4349"
+    ],
+    "tool_abuse.exploit/031": [
+      "6c8d33c5c4f36a8b1dd5b61a9e8dc212155645f336580436a3b40578fecea213"
+    ],
+    "tool_abuse.exploit/032": [
+      "6572be18bec2e97141f870a6f526f05ce6d745e08b7bd722833c9d87e6135b98"
+    ],
+    "tool_abuse.exploit/033": [
+      "d2c1a21f699c50853f14926cd930a16890854295d79c6a978d68877afec1ae0f"
+    ],
+    "tool_abuse.exploit/034": [
+      "0a65d37d7708e3f15036e4c0b3068efcaea4a9767266ec30f5d4b9bc1ba5b1ff"
+    ],
+    "tool_abuse.memory_corruption/000": [
+      "f5e3844be174906312a329a030d41d55f3751ac99d69af9a1c3f0d62984ebf9c"
+    ],
+    "tool_abuse.memory_corruption/001": [
+      "c2c769487703fa64f615b44c0897a5990897cd63343790d75803379aea068f1c"
+    ],
+    "tool_abuse.memory_corruption/002": [
+      "b2f6d49a0093d79358e5618cb613ab39e5ed485fa83edea1b2906b59086f43aa"
+    ],
+    "tool_abuse.memory_corruption/003": [
+      "e15f84c9ba871531b7f5a74deed7d3248114aa0e5c4d164f37441f99f18a3dd6"
+    ],
+    "tool_abuse.memory_corruption/004": [
+      "144a522c01602fe52ffaa77517b787f1875f3bfdd025eb2f9ed5608e57e38c1f"
+    ],
+    "tool_abuse.memory_corruption/005": [
+      "6547cc543d66552d7c197cc4d1e3e59a539c9cff7c5f6d6c798f04b54ebc5dd8"
+    ],
+    "tool_abuse.memory_corruption/006": [
+      "8d827192d62f6d6c7e5385644e90452897c25dc3bc7a3f66f8667cfdabefc12d"
+    ],
+    "tool_abuse.memory_corruption/007": [
+      "925ff72a65e4435829eca74ef031a4bd75cd89720897bdf3291b6ff596295586"
+    ],
+    "tool_abuse.memory_corruption/008": [
+      "0bbadf7a37f6139815d161ef937eaee5a67e6041b5e8ff79b08a809f79c9ff0a"
+    ],
+    "tool_abuse.memory_corruption/009": [
+      "906424b5058d3b4e456a6b466c45d4ca4185480fcf59a35c62597f6dc3f442c4"
+    ],
+    "tool_abuse.privilege_esc/000": [
+      "5f1b23ca22c612b6c23e815be83bb37991b73210887c275cf711fbe7cfcfdb28"
+    ],
+    "tool_abuse.privilege_esc/001": [
+      "db17f4fbc86e89becdb8dcadd936096ce1b6b82c27720bb88bef297029a40f47"
+    ],
+    "tool_abuse.privilege_esc/002": [
+      "7847d8c98a56c6a5240c16be2df455ad7fe1648865440fed6e9ee58e898439ec"
+    ],
+    "tool_abuse.privilege_esc/003": [
+      "1f42837375123342636ce86f500555c52aa508226f600ba4bf2d6caafd1bf3b4"
+    ],
+    "tool_abuse.privilege_esc/004": [
+      "e11c254f8b9db74476ac461ec0c47b70527aaf9fdd43f1ecd2ca20ccf03d0f3f"
+    ],
+    "tool_abuse.privilege_esc/005": [
+      "df9550e16f5025f5b314f0117b985a9485ebe915dd9a67f3d72a5efb133c4623"
+    ],
+    "tool_abuse.privilege_esc/006": [
+      "c1d16e6490f004648f3b57862bfcddd23452b160e20194e5903b96838e4320a6"
+    ],
+    "tool_abuse.privilege_esc/007": [
+      "7a1a4cc0fca36d7925518a9f5485bf3ff2f7889bee162651b6892d36bd751981"
+    ],
+    "tool_abuse.privilege_esc/008": [
+      "463c249c6d549caac478c760d8818397cdda473db1440d91fc6b25411b743841"
+    ],
+    "tool_abuse.privilege_esc/009": [
+      "b6ddc9a1a8878259d04bea627b35129300277497c18de3d7f015c8cbc806a9aa"
+    ],
+    "tool_abuse.recursive_trap/000": [
+      "980a426b8b78f7050b8a42e398195a0d7aa9c6ebea070f70e4af20018ee7fb12"
+    ],
+    "tool_abuse.recursive_trap/001": [
+      "f69056da23355dd0f42daf5080a921e8a1c15681183e17eed84e5c321ce8d3ba"
+    ],
+    "tool_abuse.recursive_trap/002": [
+      "a6f23c7c0f21f5e8004620adb7e78a6d756291e62218713b2af3f42ca3f8d18f"
+    ],
+    "tool_abuse.recursive_trap/003": [
+      "6ba1a26950ae6a0b1242351c2c46efe27d24cb3c8f694c80a384b81ab362d036"
+    ],
+    "tool_abuse.recursive_trap/004": [
+      "f3b4ebb404443b562e99b0e45f544795ca991fa681dc5ab8f5f7cddb5e7f76c1"
+    ],
+    "tool_abuse.recursive_trap/005": [],
+    "tool_abuse.recursive_trap/006": [
+      "112f406094721d5a7a4b74e2c7745e4a8b243e26a41aab0cb8039384cfaf915c"
+    ],
+    "tool_abuse.recursive_trap/007": [
+      "8c5e0ea6b9abfe038af29e464f9848e47347f8ee1e11cab4fe4ce10b0a0e2fa0"
+    ],
+    "tool_abuse.recursive_trap/008": [
+      "d024b75b82650b6056ffde38b80bd3c4aa4ba00b12b6bbf9965763ab896ce4b1"
+    ],
+    "tool_abuse.recursive_trap/009": [
+      "767bf40b4f807dc81cbc85379c6c75d0593cf62e9c9bfa31ec05438c418cb4cf"
+    ],
+    "tool_abuse.side_channel/000": [
+      "625ab3a1cbcbfb4f25bf3fd4d7940b4a1379b0acf8cb02ab04d1ad4838cd93d3",
+      "ab5f803245a300b82502e2ffc942ec049aa9af3e063f722171e550938802ef7a",
+      "1c5a3d4b616fe8deb05041314f24eb7297bd37fd1d24cc48b7a58aa63ff286b6",
+      "b0267fbd11060c11e282c0394b159744adf87c6bfec96dba82fbda54e01cece8",
+      "f6d5a28444b8702b3a3959163d838af7dc197354b74dc2f3facea24a4af1faac",
+      "bde396ce4e5469d90ad148f380b0e9561619179695ed18b84c88d3583d8dd6d9",
+      "11e543aeb48c76274644ef925829026a5e43f11120861c9d8942de7e79ac2585",
+      "1466dda4ae9864b7c009860cedba3dd59c71f1804bf2d78e524ce9fa552b51a3",
+      "89a067b142891d9fa9daff3e0b13d62cebd4d0b63fb64c122d97fb884eadbb65",
+      "04f52da35f329227090de387398e6ed558b5d4be6dcd88bf9679c15ba162009e"
+    ],
+    "tool_abuse.side_channel/001": [
+      "64645f88529e050c08abe02ab9926bf1f10021883a21fa53b1691289ea1e44cf"
+    ],
+    "tool_abuse.side_channel/002": [
+      "ebb25622c1a76bd8c1a3cff92c6d6dfa271c176ce9b650f1954bfd85928ff5f4"
+    ],
+    "tool_abuse.side_channel/003": [
+      "19be6edc0fff8f28503ed3e0ed5d3e12c1173c131c739982c88569ca3103fe1b",
+      "7dd758fe635f947e49d37a932ca3c2a965e34e0b169551023897ffefae7cd41f",
+      "43b1f45d68002077d56c26d485bd4a72358d8e8291d5992d5a56ada4207259a8",
+      "bcef10d560f7c0bfe5f358dd5f82ab1e88f2ccf68cc1dc60d9e57c4d10a9f1c4",
+      "6f7a8b1b6f57bcceaec27b63ba88b3d4adc735d8e8a269370c32a02608e4458d"
+    ],
+    "tool_abuse.side_channel/004": [
+      "3a61464e0548d857e8aa3a97113bd9f4a61c73071ae4f2403cc3038a5aee0f66"
+    ],
+    "tool_abuse.side_channel/005": [
+      "98814972c1d4210f033b2831abdf752cfcce63ac2d4125cf2a22ac94dd1694e2",
+      "cbcdc7cc61567dd5b63444a09714220b8ae393668f09f5e470bc6a69507aafc6",
+      "9695bd69286bf34c53088b36b8ece88baac69c8962dc2e1f6c2ada50a7db0cae"
+    ],
+    "tool_abuse.side_channel/006": [
+      "29677d74cc4a6f120d654370b312cd574d49e7df5acb525c0dae0665d7e1ab1f"
+    ],
+    "tool_abuse.side_channel/007": [
+      "f75304fceca1d7b04bc08c1cf08e1bced3e546bfa548e944be8bf2366d595d92"
+    ]
+  },
+  "mutation_hash": "85789a4c58e06c1032c5289bae81b8d4564916564fa45e02967b95b4135a0cd1"
+}

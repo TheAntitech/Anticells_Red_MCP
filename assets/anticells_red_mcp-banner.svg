@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="500" viewBox="0 0 1400 500" role="img" aria-label="anticells_red_mcp — observe the boundary">
+<defs>
+<radialGradient id="back"><stop stop-color="#31101a"/><stop offset="1" stop-color="#090b10"/></radialGradient>
+<radialGradient id="iris"><stop stop-color="#eb344f"/><stop offset=".7" stop-color="#9c182d"/><stop offset="1" stop-color="#3b101d"/></radialGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".025"/></pattern>
+</defs>
+<rect width="1400" height="500" rx="18" fill="url(#back)"/>
+<rect width="1400" height="500" rx="18" fill="url(#grid)"/>
+<path d="M0 448H1400" stroke="#842237" stroke-opacity=".6"/>
+<g transform="translate(280 235)">
+<circle r="179" fill="none" stroke="#9b253a" stroke-opacity=".28"/>
+<circle r="164" fill="none" stroke="#9b253a" stroke-opacity=".14" stroke-dasharray="2 14"/>
+<path d="M-170 0H-190M170 0H190M0-170V-190M0 170V190" stroke="#e35670"/>
+<circle r="139" fill="url(#iris)" stroke="#f04b63" stroke-width="2"/>
+<circle r="94" fill="none" stroke="#160b12" stroke-width="3"/>
+<circle r="35" fill="#120a10"/>
+<g id="tomoe" transform="translate(0 -94)"><circle r="18" fill="#120a10"/><path d="M-17-6C-29 4-29 28-6 41C-17 23-6 22 11 12Z" fill="#120a10"/></g>
+<g transform="rotate(120)"><use href="#tomoe"/></g>
+<g transform="rotate(240)"><use href="#tomoe"/></g>
+</g>
+<g font-family="DejaVu Sans, sans-serif">
+<text x="528" y="132" fill="#f07189" font-size="16" letter-spacing="5">LLM SECURITY RESEARCH</text>
+<text x="520" y="236" fill="#fff0f3" font-size="66" font-weight="bold" letter-spacing="-2">anticells_red_mcp</text>
+<text x="526" y="294" fill="#d3677d" font-size="30" letter-spacing="5">RESEARCH INTERFACE</text>
+<text x="528" y="348" fill="#b7a7ad" font-size="22">Observe the boundary. Understand the response.</text>
+<text x="74" y="478" fill="#b97585" font-size="13" letter-spacing="2">MRX0RD / RESEARCH INTERFACE</text>
+<text x="1030" y="478" fill="#b97585" font-size="13" letter-spacing="2">8 TOOLS · STDIO · 1.0.2</text>
+</g>
+</svg>

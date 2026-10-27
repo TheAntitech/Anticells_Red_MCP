@@ -1,0 +1,42 @@
+{
+  "env_files": ["../.env"],
+  "targets": {
+    "custom_api": {
+      "url": "https://gateway.example/chat",
+      "method": "POST",
+      "headers": {
+        "Authorization": "Bearer ${env.API_KEY}"
+      },
+      "variables": {
+        "workspace": "research",
+        "max_tokens": 512
+      },
+      "body": {
+        "question": "${request.prompt}",
+        "workspace": "${vars.workspace}",
+        "limit": "${vars.max_tokens}"
+      },
+      "response": {
+        "text": "/result/answer"
+      }
+    },
+    "custom_tools": {
+      "url": "https://gateway.example/chat",
+      "headers": {
+        "Authorization": "Bearer ${env.API_KEY}"
+      },
+      "body": {
+        "conversation": "${request.messages}",
+        "functions": "${request.tools}"
+      },
+      "response": {
+        "text": "/result/answer",
+        "tool_calls": {
+          "path": "/result/actions",
+          "name": "/name",
+          "arguments": "/arguments"
+        }
+      }
+    }
+  }
+}

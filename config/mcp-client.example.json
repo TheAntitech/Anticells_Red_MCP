@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "anticells_red_mcp": {
+      "command": "bash",
+      "args": ["/absolute/path/anticells_red_mcp/run.sh"]
+    }
+  }
+}

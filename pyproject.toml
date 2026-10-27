@@ -1,0 +1,46 @@
+# ♢ 𝓜𝖗𝚇₀𝚛𝚍 ⚡🖤  —  1.1.0 hardened build
+[project]
+name = "anticells_red_mcp"
+version = "1.1.0"
+description = "anticells_red_mcp: LLM security research and attack template discovery through MCP"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.26.0,<2",
+    "httpx>=0.27.0,<1",
+    "httpcore>=1.0.0,<2",
+    "anyio>=4.0.0,<5",
+    "rich>=13.0.0,<15",
+    "structlog>=24.0.0,<27",
+    "jsonschema>=4.23.0,<5",
+    "python-dotenv>=1,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.urls]
+Repository = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0"
+Documentation = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/blob/main/README.md"
+Issues = "https://github.com/Wael-Rd/Anticells_Red_MCP-1.0.0/issues"
+
+[project.scripts]
+anticells_red_mcp = "anticells_red_mcp.mcp_server.server:main"
+anticells_red_mcp-catalog = "anticells_red_mcp.catalog.cli:main"
+anticells_red_mcp-reports = "anticells_red_mcp.reports.cli:main"
+anticells_red_mcp-doctor = "anticells_red_mcp.doctor:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"anticells_red_mcp.catalog" = ["data/*.json", "migrations/*.sql"]
+"anticells_red_mcp.reports" = ["migrations/*.sql"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
