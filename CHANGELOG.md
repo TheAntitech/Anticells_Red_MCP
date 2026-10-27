@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased - Responsible-use guidance
+
+- Add an ethical-use matrix, guidance for isolated self-hosted/open-weight testing and hosted APIs, operator-override links, and data-handling responsibilities. Link the guide from the README, security policy, and contributor guide while keeping the Apache license unchanged.
+
 ## Unreleased - Contributor guide
 
 - Add public contribution guidance covering development setup, the six-job compatibility matrix, pull-request review, catalog/template rules, documentation updates, and private security reporting. Link the guide from the README.

@@ -136,6 +136,8 @@ The [verification record](docs/security-review.md) covers the publication securi
 
 Anticells Red MCP is intended for authorized security research, education, and defensive evaluation. Use findings to improve AI safeguards and protect users.
 
+See [RESPONSIBLE_USE.md](RESPONSIBLE_USE.md) for the ethical-use matrix, self-hosted/open-weight recommendation, hosted-API considerations, and local-lab configuration. This guidance is separate from the Apache license terms in [LICENSE](LICENSE).
+
 - **Get explicit authorization.** Test systems you own or have permission to assess. Agree on endpoints, methods, data access, and stopping conditions, and respect provider policies.
 - **Limit operational impact.** Prefer isolated test environments, keep request and iteration limits bounded, and stop if testing disrupts service, affects other users, or creates unexpected costs.
 - **Protect sensitive information.** Prefer synthetic data and credentials with minimal permissions. Restrict access to local databases and reports, and remove secrets and personal information before sharing evidence.
@@ -157,6 +159,7 @@ Anticells Red MCP is intended for authorized security research, education, and d
 | [Architecture](docs/architecture.md) | Components and execution flow |
 | [Troubleshooting](docs/troubleshooting.md) | Startup, transport, and configuration errors |
 | [Security review](docs/security-review.md) | Findings, fixes, verification, and operating boundaries |
+| [Responsible use](RESPONSIBLE_USE.md) | Ethical-use matrix, test environments, hosted APIs, and sensitive data |
 
 ## Contributing
 

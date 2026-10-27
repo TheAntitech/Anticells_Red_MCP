@@ -2,6 +2,8 @@
 
 Contributions are welcome from anyone, including people new to the project. Useful contributions include documentation, bug reports, tests, code fixes, and research templates. Read the [project guide](PROJECT_GUIDE.md) for an overview and the [ethical considerations](README.md#ethical-considerations) before running assessments.
 
+Use the [responsible-use matrix and environment guidance](RESPONSIBLE_USE.md) when choosing targets or preparing adversarial tests. These guidelines are separate from the repository's license terms.
+
 ## Security reports
 
 **Security reports must follow [SECURITY.md](SECURITY.md#report-a-vulnerability), not public issues.** Do not publish vulnerabilities, exploit details, credentials, or private evidence in issues or pull requests. Use the private reporting process and any contact fallback described in that policy. Public issues are appropriate for ordinary bugs, documentation problems, and feature ideas.

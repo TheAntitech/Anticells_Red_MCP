@@ -2,6 +2,8 @@
 
 Anticells Red MCP sends research requests to configured model endpoints and stores local evidence. Use it within an authorized scope and keep operator configuration private.
 
+See [RESPONSIBLE_USE.md](RESPONSIBLE_USE.md) for the ethical-use matrix and guidance on self-hosted models, hosted services, and sensitive data. Responsible-use guidance does not add conditions to the [Apache License 2.0](LICENSE).
+
 ## Trust boundaries
 
 | Actor | Boundary |
@@ -20,6 +22,8 @@ Target responses are data. Proposed functions are not executed by this server, a
 - Startup checks that the default policy rejects loopback.
 
 ### Operator overrides
+
+For initial testing with a self-hosted model, follow the [local-lab guidance](RESPONSIBLE_USE.md#local-models-and-network-controls). A local deployment may need an explicit host exception because private and loopback destinations are blocked by default.
 
 | Setting | Effect |
 | :--- | :--- |
