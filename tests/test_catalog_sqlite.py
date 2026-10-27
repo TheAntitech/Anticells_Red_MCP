@@ -1,6 +1,7 @@
 import asyncio
 import copy
 import json
+import os
 from concurrent.futures import ThreadPoolExecutor
 from unittest.mock import AsyncMock
 
@@ -315,8 +316,23 @@ def test_server_keeps_reports_available_and_closes_invalid_catalog(catalog_path,
     assert closed and repository._snapshot is None
 
 
-def test_automatic_initialization_is_concurrent_and_preserves_edits(tmp_path):
+@pytest.mark.parametrize('extended_paths', [
+    False,
+    pytest.param(True, marks=pytest.mark.skipif(os.name != 'nt', reason='native Windows drive paths')),
+], ids=['ordinary-path', 'extended-drive-path'])
+def test_automatic_initialization_is_concurrent_and_preserves_edits(tmp_path, monkeypatch, extended_paths):
     from anticells_red_mcp.catalog.setup import prepare_database
+    if extended_paths:
+        from anticells_red_mcp.catalog import repository
+        original = repository.require_path
+
+        def resolved_with_prefix(value):
+            # Windows resolve() may retain this prefix during concurrent file
+            # creation. Exercise that result even on Python versions which
+            # usually remove it, rather than depending on a timing window.
+            return Path('\\\\?\\' + str(original(value)).removeprefix('\\\\?\\'))
+
+        monkeypatch.setattr(repository, 'require_path', resolved_with_prefix)
     catalog_path = str(tmp_path / 'new' / 'catalog.sqlite3')
     def start(_):
         return prepare_database(MCPConfig(database_path=catalog_path))

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased - Windows SQLite path compatibility
+
+- Convert Windows extended drive paths (`\\?\C:\...`) to standard file URIs before opening SQLite. This fixes catalog initialization when concurrent path resolution retains the extended prefix and SQLite rejects the URI authority.
+- Apply the same conversion to report storage while preserving read-only connection modes and filename escaping.
+- Cover ordinary and extended paths in the existing concurrent initialization/edit-preservation test, and add report-store and URI regression checks.
+
 ## Unreleased - Documentation alignment
 
 - Point HTTPS clone instructions, package metadata, and security-reporting links to `TheAntitech/Anticells_Red_MCP`.

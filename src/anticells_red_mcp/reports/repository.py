@@ -8,6 +8,7 @@ from contextlib import contextmanager
 from importlib.resources import files
 from pathlib import Path
 
+from .._sqlite import sqlite_file_uri
 from .model import ReportError, encode, decode, now, new_id, identifier, document, render
 
 
@@ -74,7 +75,7 @@ class ReportRepository:
                     os.close(os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600))
                 except FileExistsError:
                     pass
-            uri = self.path.as_uri() + ('?mode=rw' if write else '?mode=ro')
+            uri = sqlite_file_uri(self.path) + ('?mode=rw' if write else '?mode=ro')
             con = sqlite3.connect(uri, uri=True, timeout=5, isolation_level=None)
             con.execute('PRAGMA foreign_keys=ON')
             con.execute('BEGIN IMMEDIATE' if write else 'BEGIN')

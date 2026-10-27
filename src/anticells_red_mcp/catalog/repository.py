@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import sqlite3
 
+from .._sqlite import sqlite_file_uri
 from .model import CatalogError, CatalogSnapshot, decode, encode, export_content, import_content, read_document
 
 SCHEMA_VERSION = 1
@@ -55,7 +56,7 @@ def _connection(path, *, write=False, create=False):
             else:
                 os.close(descriptor)
         mode = 'rw' if write else 'ro'
-        conn = sqlite3.connect(path.as_uri() + '?mode=' + mode, uri=True, timeout=5, isolation_level=None)
+        conn = sqlite3.connect(sqlite_file_uri(path) + '?mode=' + mode, uri=True, timeout=5, isolation_level=None)
         conn.execute('BEGIN IMMEDIATE' if write else 'BEGIN')
         yield conn
         conn.commit()
