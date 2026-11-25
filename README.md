@@ -9,7 +9,7 @@
   <code>v1.1.0</code> &nbsp; <code>Python 3.10+</code> &nbsp; <a href="#tools"><code>12&nbsp;MCP&nbsp;tools</code></a> &nbsp; <a href="docs/catalogs.md"><code>194&nbsp;templates</code></a> &nbsp; <a href="SECURITY.md"><code>Default-deny&nbsp;egress</code></a>
 </p>
 
-<p align="center"><strong>by Wael Rdifi for Antitech</strong></p>
+<p align="center"><strong>By Wael Rdifi - Lead Security Researcher @ Antitech</strong></p>
 <p align="center"><a href="#quick-start">Quick start</a> · <a href="#connect">Connect</a> · <a href="#tools">Tools</a> · <a href="SECURITY.md">Security</a> · <a href="#ethical-considerations">Ethics</a> · <a href="#documentation">Documentation</a> · <a href="#contributing">Contributing</a></p>
 
 ---
@@ -23,6 +23,16 @@
 | **Document** | Local SQLite evidence with JSON, Markdown, and escaped HTML exports |
 
 > Results are research evidence. Success scores and model identities are heuristic; proposed tool calls do not establish an executed external effect.
+
+
+**Looking for advanced AI red-teaming capabilities?**
+
+	⁠Anticells Red is also available as a commercial
+	⁠solution, with expanded research libraries, hosted MCP
+	⁠infrastructure and autonomous security assessments.
+
+  [Explore Premium & Book a Demo](https://theantitech.com/#contact)
+
 
 <a id="quick-start"></a>
 ## <img src="assets/icons/install.svg" width="20" height="20" alt=""> Quick start
@@ -161,6 +171,39 @@ See [RESPONSIBLE_USE.md](RESPONSIBLE_USE.md) for the ethical-use matrix, self-ho
 | [Security review](docs/security-review.md) | Findings, fixes, verification, and operating boundaries |
 | [Responsible use](RESPONSIBLE_USE.md) | Ethical-use matrix, test environments, hosted APIs, and sensitive data |
 
+## Beyond Open Source: Anticells Red Premium
+
+Anticells Red MCP is free and open source. For security researchers, AI developers and enterprise teams looking for more advanced capabilities, Antitech offers commercial solutions designed to scale AI security assessments.
+
+### Anticells Red MCP: Hosted & Premium
+
+Get access to an expanded, continuously evolving library of adversarial testing techniques, attack templates and AI security research, without the overhead of managing your own infrastructure.
+
+•⁠  ⁠Expanded library of attack techniques and testing templates.
+•⁠  ⁠Continuous updates reflecting emerging AI security threats and research.
+•⁠  ⁠Managed infrastructure and simplified deployment.
+•⁠  ⁠Commercial support for professional and enterprise use cases.
+
+*More attack coverage. Continuous intelligence. Less infrastructure to manage.*
+
+### Anticells Red Orchestrator
+
+Go beyond isolated tests with an autonomous AI red-teaming solution designed to coordinate comprehensive security assessments across LLMs, AI agents and agentic workflows.
+
+•⁠  ⁠Autonomous, multi-stage adversarial testing.
+•⁠  ⁠Intelligent attack orchestration and adaptive testing strategies.
+•⁠  ⁠Integrated Anticells Red MCP capabilities.
+•⁠  ⁠Centralized vulnerability discovery, assessment and reporting.
+
+*From individual security tests to comprehensive adversarial assessments.*
+
+### Interested in upgrading?
+
+Whether you are securing AI agents, evaluating LLM applications or building an enterprise AI security program, Antitech can help you take your security assessments further.
+
+*[Book a demo or request commercial access](https://theantitech.com/#contact)*
+
+Learn more at [theantitech.com](https://theantitech.com).
 ## Contributing
 
 Contributions are welcome from anyone. See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, testing, pull-request expectations, and catalog contribution rules. Security reports must follow [SECURITY.md](SECURITY.md#report-a-vulnerability) rather than public issues.
