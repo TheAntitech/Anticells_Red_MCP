@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased - Docker support for Glama
+
+- Add a Python 3.12 Dockerfile that starts the MCP server over stdio as a non-root user, with writable SQLite state under `/app/data`.
+- Limit the Docker build context to package sources, metadata, and bundled catalog data. Document local container usage and Glama startup configuration.
+
 ## Unreleased - Responsible-use guidance
 
 - Add an ethical-use matrix, guidance for isolated self-hosted/open-weight testing and hosted APIs, operator-override links, and data-handling responsibilities. Link the guide from the README, security policy, and contributor guide while keeping the Apache license unchanged.

@@ -69,6 +69,21 @@ On Windows, use `.venv\Scripts\anticells_red_mcp-doctor.exe`.
 
 For manual installation, updates, and installer options, see the [installation guide](docs/installation.md).
 
+### Docker and Glama
+
+The root [Dockerfile](Dockerfile) packages the stdio server for [Glama's automated safety and quality checks](https://glama.ai/mcp/methodology). Build from the repository root:
+
+```bash
+docker build -t anticells-red-mcp .
+docker run --rm -i anticells-red-mcp
+```
+
+Keep stdin open with `-i` and omit `-t` when connecting an MCP client. The server waits for MCP messages; no port mapping or API key is needed for initialization and tool discovery.
+
+The image runs as a non-root user and initializes its SQLite catalog and reports under `/app/data`. To preserve them across runs, add `--mount source=anticells-red-mcp-data,target=/app/data` before the image name. The build context includes only package sources, bundled data, and package metadata.
+
+For Glama, use this Dockerfile with the repository root as the build context and `anticells_red_mcp` as the startup command. No environment variables are required for discovery. Glama runs the checks after it builds and starts the image.
+
 <a id="connect"></a>
 ## <img src="assets/icons/connect.svg" width="20" height="20" alt=""> Connect your agent
 

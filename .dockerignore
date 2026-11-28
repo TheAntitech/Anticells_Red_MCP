@@ -1,0 +1,11 @@
+# Only send package sources, metadata, and bundled data to the build context.
+**
+!pyproject.toml
+!README.md
+!LICENSE
+!src/
+!src/**/
+!src/**/*.py
+!src/anticells_red_mcp/catalog/data/*.json
+!src/anticells_red_mcp/catalog/migrations/*.sql
+!src/anticells_red_mcp/reports/migrations/*.sql
