@@ -4,6 +4,7 @@
 
 - Add a Python 3.12 Dockerfile that starts the MCP server over stdio as a non-root user, with writable SQLite state under `/app/data`.
 - Limit the Docker build context to package sources, metadata, and bundled catalog data. Document local container usage and Glama startup configuration.
+- Document Glama's separate generated-build settings: Python 3.12, package installation with `uv`, the complete proxy startup command, and repository synchronization.
 
 ## Unreleased - Responsible-use guidance
 

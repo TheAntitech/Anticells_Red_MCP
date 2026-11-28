@@ -82,7 +82,7 @@ Keep stdin open with `-i` and omit `-t` when connecting an MCP client. The serve
 
 The image runs as a non-root user and initializes its SQLite catalog and reports under `/app/data`. To preserve them across runs, add `--mount source=anticells-red-mcp-data,target=/app/data` before the image name. The build context includes only package sources, bundled data, and package metadata.
 
-For Glama, use this Dockerfile with the repository root as the build context and `anticells_red_mcp` as the startup command. No environment variables are required for discovery. Glama runs the checks after it builds and starts the image.
+Glama's **Admin → Dockerfile** configuration form generates a separate image from its build steps and CMD fields. Configure Python 3.12, install this package with `uv`, and supply the server command after `mcp-proxy --`; see the [Glama setup guide](docs/glama.md) for copyable field values. No API credentials are required for discovery. Building the repository Dockerfile locally does not validate a different configuration entered in Glama.
 
 <a id="connect"></a>
 ## <img src="assets/icons/connect.svg" width="20" height="20" alt=""> Connect your agent
